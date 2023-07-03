@@ -19,6 +19,7 @@ const userPersistConfig = {
     whitelist: ["isLoggedIn", "userInfo"],
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (history) =>
     combineReducers({
         router: connectRouter(history),
