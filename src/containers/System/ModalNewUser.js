@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { emitter } from "../../utils/emitter";
 
 import {
     Button,
@@ -28,10 +29,24 @@ class ModalNewUser extends Component {
             gender: "",
             roleId: "",
         };
+        this.listenEmitter();
 
         // this.toggle = this.toggle.bind(this);
     }
-
+    listenEmitter = () => {
+        emitter.on("EVEN_CLEAR_MODAL_DATA", () => {
+            this.setState({
+                email: "",
+                password: "",
+                firstName: "",
+                lastName: "",
+                phoneNumber: "",
+                address: "",
+                gender: "",
+                roleId: "",
+            });
+        });
+    };
     toggle = () => {
         this.props.toggle();
     };

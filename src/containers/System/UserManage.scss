@@ -1,9 +1,9 @@
 .users-table {
-    max-height: 500px;
     /* Đặt chiều cao tối đa của container */
+    max-height: 500px;
+    /* Hiển thị thanh cuộn nếu nội dung vượt quá chiều cao */
     overflow-y: auto;
 
-    /* Hiển thị thanh cuộn nếu nội dung vượt quá chiều cao */
     .btn-edit {
         height    : 30px;
         width     : 20px;

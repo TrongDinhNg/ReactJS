@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import userService from "../../services/userService";
 import "./UserManage.scss";
 import ModalNewUser from "./ModalNewUser";
+import { emitter } from "../../utils/emitter";
 class UserManage extends Component {
     constructor(props) {
         super(props);
@@ -43,6 +44,20 @@ class UserManage extends Component {
                 this.setState({
                     modal: false,
                 });
+                emitter.emit("EVEN_CLEAR_MODAL_DATA");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    deleteUser = async (data) => {
+        //console.log("data for Delete: ", data);
+        try {
+            let res = await userService.deleteUserService(data.id);
+            if (res && res.errCode === 0) {
+                this.getAllUsersFromReact();
+            } else {
+                alert(res.errMessage);
             }
         } catch (error) {
             console.log(error);
@@ -83,6 +98,7 @@ class UserManage extends Component {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">FirstName</th>
                                 <th scope="col">LastName</th>
@@ -94,27 +110,29 @@ class UserManage extends Component {
                             {arrUsers &&
                                 arrUsers.map((item, index) => {
                                     return (
-                                        <tr>
+                                        <tr key={index}>
                                             <th scope="row">{index + 1}</th>
+                                            <td>{item.id}</td>
                                             <td>{item.email}</td>
                                             <td>{item.firstName}</td>
                                             <td>{item.lastName}</td>
                                             <td>{item.address}</td>
                                             <td>
-                                                <a
+                                                <button
                                                     type="button"
                                                     className="btn btn-edit btn-primary"
-                                                    href="/"
                                                 >
                                                     <i className="fas fa-edit"></i>
-                                                </a>
-                                                <a
+                                                </button>
+                                                <button
                                                     type="button"
                                                     className="btn btn-delete btn-primary"
-                                                    href="/"
+                                                    onClick={() =>
+                                                        this.deleteUser(item)
+                                                    }
                                                 >
                                                     <i className="fas fa-trash"></i>
-                                                </a>
+                                                </button>
                                             </td>
                                         </tr>
                                     );
