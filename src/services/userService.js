@@ -18,5 +18,8 @@ const userService = {
             },
         });
     },
+    editUserService(data) {
+        return axios.put("/api/edit-user", data);
+    },
 };
 export default userService;

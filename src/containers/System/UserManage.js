@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import userService from "../../services/userService";
 import "./UserManage.scss";
 import ModalNewUser from "./ModalNewUser";
+import ModalDeleteUser from "./ModalDeleteUser";
+import ModalEditUser from "./ModalEditUser";
 import { emitter } from "../../utils/emitter";
 class UserManage extends Component {
     constructor(props) {
@@ -10,6 +12,10 @@ class UserManage extends Component {
         this.state = {
             arrUsers: [],
             modal: false,
+            modalDelete: false,
+            modalEdit: false,
+            userDelete: {},
+            userEdit: {},
         };
     }
 
@@ -29,9 +35,31 @@ class UserManage extends Component {
             modal: true,
         });
     };
+    handleDeleteUser = (data) => {
+        this.setState({
+            modalDelete: true,
+            userDelete: data,
+        });
+    };
+    handleEditUser = (data) => {
+        this.setState({
+            modalEdit: true,
+            userEdit: data,
+        });
+    };
     toggleParent = () => {
         this.setState({
             modal: !this.state.modal,
+        });
+    };
+    toggleDelete = () => {
+        this.setState({
+            modalDelete: !this.state.modalDelete,
+        });
+    };
+    toggleEdit = () => {
+        this.setState({
+            modalEdit: !this.state.modalEdit,
         });
     };
     createNewUser = async (data) => {
@@ -52,8 +80,23 @@ class UserManage extends Component {
     };
     deleteUser = async (data) => {
         //console.log("data for Delete: ", data);
+        //window.confirm(`You want to delete user: ${data.email} `)
+
         try {
             let res = await userService.deleteUserService(data.id);
+            if (res && res.errCode === 0) {
+                this.getAllUsersFromReact();
+            } else {
+                alert(res.errMessage);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    editUser = async (data) => {
+        try {
+            let res = await userService.editUserService(data);
+            console.log("res about edit", res);
             if (res && res.errCode === 0) {
                 this.getAllUsersFromReact();
             } else {
@@ -81,6 +124,21 @@ class UserManage extends Component {
                     isOpen={this.state.modal}
                     createNewUser={this.createNewUser}
                 />
+                <ModalDeleteUser
+                    toggleDelete={this.toggleDelete}
+                    isOpenDelete={this.state.modalDelete}
+                    userDelete={this.state.userDelete}
+                    deleteUser={this.deleteUser}
+                />
+                {this.state.modalEdit && (
+                    <ModalEditUser
+                        toggleEdit={this.toggleEdit}
+                        isOpenEdit={this.state.modalEdit}
+                        userEdit={this.state.userEdit}
+                        editUser={this.editUser}
+                    />
+                )}
+
                 <div className="title text-center"> User Manage</div>
                 <div>
                     <div>
@@ -121,14 +179,22 @@ class UserManage extends Component {
                                                 <button
                                                     type="button"
                                                     className="btn btn-edit btn-primary"
+                                                    onClick={() => {
+                                                        this.handleEditUser(
+                                                            item,
+                                                        );
+                                                    }}
                                                 >
                                                     <i className="fas fa-edit"></i>
                                                 </button>
+
                                                 <button
                                                     type="button"
                                                     className="btn btn-delete btn-primary"
                                                     onClick={() =>
-                                                        this.deleteUser(item)
+                                                        this.handleDeleteUser(
+                                                            item,
+                                                        )
                                                     }
                                                 >
                                                     <i className="fas fa-trash"></i>
