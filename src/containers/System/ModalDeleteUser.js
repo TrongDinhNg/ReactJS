@@ -17,8 +17,8 @@ class ModalDeleteUser extends Component {
         this.toggle();
     };
     render() {
-        console.log("check child props: ", this.props);
-        console.log("check child userDelete: ", this.props.userDelete);
+        // console.log("check child props: ", this.props);
+        // console.log("check child userDelete: ", this.props.userDelete);
         return (
             <Modal
                 isOpen={this.props.isOpenDelete}

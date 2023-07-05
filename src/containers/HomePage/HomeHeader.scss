@@ -1,30 +1,36 @@
 .home-header-container {
-    background-color: antiquewhite;
-    height          : 58px;
-    padding         : 0 20px;
-    margin-right    : auto;
-    margin-left     : auto;
+    background: rgba(255, 255, 255, 1);
+
+    height      : 10vh;
+    padding     : 0 20px;
+    margin-right: auto;
+    margin-left : auto;
 
     .home-header-content {
-        display: flex;
-        width  : 100%;
-        height : 100%;
+        display   : flex;
+        width     : 100%;
+        height    : 100%;
+        background: rgba(255, 255, 255, 1);
+        z-index   : 2;
+        width     : 100%;
+        padding   : 10px 0;
+
 
         .left-content {
-            border     : 1px solid red;
             width      : 25%;
             display    : flex;
             align-items: center;
 
             i {
-                font-size: 25px;
-                color    : gray;
-                cursor   : pointer;
+                font-size   : 25px;
+                color       : gray;
+                cursor      : pointer;
+                padding-left: 50px;
             }
 
             .header-logo {
-                width     : 90%;
-                height    : 90%;
+                width     : 56%;
+                height    : 57%;
                 background: url('../../assets/logo.svg') center center no-repeat;
                 cursor    : pointer;
 
@@ -33,7 +39,6 @@
 
         .center-content {
             display        : flex;
-            border         : 1px solid red;
             width          : 50%;
             justify-content: space-around;
             align-items    : center;
@@ -49,19 +54,177 @@
         }
 
         .right-content {
-            border         : 1px solid red;
             width          : 25%;
             align-items    : center;
             display        : flex;
-            justify-content: space-around;
+            justify-content: flex-end;
+
 
             .support {
+                padding-right: 85px;
+
                 i {
-                    color: #45c3d2;
+                    color        : #45c3d2;
+                    padding-right: 4px;
                 }
             }
 
+            .language-vi {
+                padding-right: 13px;
+                cursor       : pointer;
 
+                &.active {
+                    color: yellow;
+                }
+
+            }
+
+            .language-en {
+                padding-right: 13px;
+                cursor       : pointer;
+
+                &.active {
+                    color: rgb(21, 126, 212);
+                }
+
+
+            }
+
+
+        }
+    }
+}
+
+.home-header-banner {
+
+    background         : url(../../assets/background-banner.jpg);
+    height             : 800px;
+    background-repeat  : no-repeat;
+    background-size    : cover;
+    background-position: center;
+    height             : 90vh;
+    /* Chiều cao màn hình */
+    overflow-y         : scroll;
+    z-index            : -1;
+
+    /* Tạo thanh cuộn dọc khi nội dung vượt quá chiều cao */
+    .search {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.1));
+        padding         : 45px 0;
+        height          : 60%;
+
+
+        .title {
+            margin-top   : 0px;
+            margin-bottom: 15px;
+
+            .title1 {
+                color         : #fff;
+                font-size     : 32px;
+                text-transform: uppercase;
+                text-shadow   : 1px 1px 1px #333;
+                border-radius : 0;
+                padding-top   : 61px;
+
+                font: sans-serif;
+
+
+                b {
+                    margin-top : 20px;
+                    font-weight: bold;
+                }
+            }
+
+        }
+
+        .search-form {
+            align-items    : center;
+            display        : flex;
+            justify-content: center;
+            margin         : 10px auto;
+            width          : fit-content;
+            background     : #f7d800;
+            color          : #fff;
+            outline        : none;
+            border-radius  : 25px;
+            padding        : 10px;
+
+            i {
+                padding: 0 5px;
+            }
+
+            input {
+                width     : 400px;
+                height    : 30px;
+                background: transparent;
+                outline   : none;
+                border    : none;
+                font-size : 14px;
+            }
+
+        }
+
+    }
+
+    .option {
+
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
+        padding-top     : 30px;
+        padding-bottom  : 20px;
+        height          : 40%;
+
+
+        ul {
+            list-style     : none;
+            margin         : 0px;
+            padding        : 0px;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            flex-wrap      : wrap;
+
+            li {
+                margin : 0px;
+                padding: 5px;
+                display: flex;
+
+                a {
+                    width          : 240px;
+                    text-align     : center;
+                    padding        : 5px 5px;
+                    color          : #333;
+                    display        : inline-block;
+                    position       : relative;
+                    font-size      : 15px;
+                    font-weight    : bold;
+                    display        : flex;
+                    flex-direction : column;
+                    text-decoration: none;
+
+                    i {
+                        background         : #fff;
+                        border-radius      : 50%;
+                        -moz-box-shadow    : 1px 2px 4px rgba(0, 0, 0, 0.5);
+                        -webkit-box-shadow : 1px 2px 4px rgba(0, 0, 0, .5);
+                        box-shadow         : 0px 1px 2px rgba(0, 0, 0, .5);
+                        width              : 50px;
+                        height             : 50px;
+                        margin             : 2px auto;
+                        background-size    : 32px;
+                        background-repeat  : no-repeat;
+                        background-position: center;
+                        padding            : 12px;
+                        font-size          : 25px;
+                        color              : #45c3d2;
+                    }
+
+                    .text {
+                        &:hover {
+                            color: #45c3d2;
+                        }
+                    }
+                }
+            }
         }
     }
 }

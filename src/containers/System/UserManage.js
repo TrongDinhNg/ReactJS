@@ -96,7 +96,7 @@ class UserManage extends Component {
     editUser = async (data) => {
         try {
             let res = await userService.editUserService(data);
-            console.log("res about edit", res);
+            // console.log("res about edit", res);
             if (res && res.errCode === 0) {
                 this.getAllUsersFromReact();
             } else {
