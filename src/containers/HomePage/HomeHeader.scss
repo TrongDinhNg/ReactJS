@@ -72,9 +72,16 @@
             .language-vi {
                 padding-right: 13px;
                 cursor       : pointer;
+                opacity      : 0.3;
 
                 &.active {
-                    color: yellow;
+                    opacity    : 1;
+                    font-weight: bold;
+                    color      : rgb(185, 92, 16);
+                }
+
+                &:hover {
+                    opacity: 1;
                 }
 
             }
@@ -82,9 +89,17 @@
             .language-en {
                 padding-right: 13px;
                 cursor       : pointer;
+                opacity      : 0.3;
+
 
                 &.active {
-                    color: rgb(21, 126, 212);
+                    opacity    : 1;
+                    color      : rgb(7, 136, 241);
+                    font-weight: bold;
+                }
+
+                &:hover {
+                    opacity: 1;
                 }
 
 
