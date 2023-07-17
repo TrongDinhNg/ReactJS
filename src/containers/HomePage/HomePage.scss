@@ -1,0 +1,206 @@
+//section
+.section {
+    height       : 330px;
+    border-bottom: 3px solid #efeef5;
+
+    &.section-speciality {
+        background-color: #f5f5f5;
+    }
+
+    &.section-medicalFacility {
+        background-color: white;
+    }
+
+    &.section-outstandingDoctor {
+        background-color: #f5f5f5;
+    }
+
+    &.section-handBook {
+        background-color: white;
+    }
+
+    &.section-about {
+        background-color: white;
+        height          : 500px;
+        margin          : 0 100px;
+        padding-top     : 45px;
+
+        .about-header {
+            font-size    : 24px;
+            font-weight  : bold;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            display: flex;
+
+            .about-content-left {
+                width   : 50%;
+                //border: 1px solid red;
+            }
+
+            .about-content-right {
+                width      : 50%;
+                //border: 1px solid black;
+                padding-top: 10px;
+                font-style : italic;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .section-container {
+        margin: 0px 95px;
+        height: 345px;
+        width : 85vw;
+
+        .section-header {
+            font-size      : 24px;
+            font-weight    : bold;
+            display        : flex;
+            padding        : 18px 10px 7px 1px;
+            align-items    : center;
+            justify-content: space-between;
+
+            .see-more {
+                background-color: #c1cbc2;
+                border          : none;
+                color           : #000000;
+                padding         : 6px 14px;
+                text-align      : center;
+                text-decoration : none;
+                display         : inline-block;
+                font-size       : 15px;
+                margin          : 4px 2px;
+                cursor          : pointer;
+                text-transform  : uppercase;
+
+                &:hover {
+                    background-color: #f3e309;
+                    color           : #ece9e9;
+                }
+            }
+        }
+
+        .section-body {
+
+            .img-customize {
+                padding-left    : 0px;
+                padding-right   : 5px;
+                border          : 1px solid #f5f5f5;
+                height          : 200px;
+                width           : 278px;
+                // background   : #00ffff1a;
+                margin-top      : 30px;
+
+                .section-logo {
+                    width              : 102%;
+                    background-position: center center;
+                    background-repeat  : no-repeat;
+                    background-size    : cover;
+                    background-color   : #eee;
+                    padding-top        : 59.25%;
+
+                    //logo sections
+                    &.speciality-logo {
+                        background-image: url(../../assets/speciality/co-xuong-khop.jpg);
+                    }
+
+                    &.doctor-logo {
+                        background-image: url(../../assets/doctor/doctor.png);
+                        width           : 120px;
+                        height          : 120px;
+                        margin          : 2px auto;
+                        border-radius   : 50%;
+                        padding         : 0px;
+                    }
+
+                    &.medicalFacility-logo {
+                        background-image: url(../../assets/medicalFacility/logo-bvcr.jpg);
+                    }
+
+                    &.handbook-logo {
+                        background-image: url(../../assets/handbook/gan-nhiem-mo-y-khoa-van-hanh.png);
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+//------Start--------customize slick slider-------------
+.slick-list {
+    background-color  : transparent;
+    height            : 260px;
+    //border          : 1px solid #f3e309;
+
+}
+
+/* the slides */
+.slick-slide {
+    padding-left      : 5px;
+    padding-right     : 5px;
+    // margin       : 5px;
+    //border          : 1px solid #d82020;
+    overflow          : hidden;
+
+}
+
+.slick-prev {
+    height     : 45px !important;
+    width      : 40px !important;
+    z-index    : 10;
+    margin-left: 11px !important;
+    background : #f5f5f5 !important;
+    opacity    : 0.7;
+
+    &:hover {
+        opacity   : 1;
+        background: #fff;
+
+    }
+}
+
+.slick-next {
+    height      : 45px !important;
+    width       : 40px !important;
+    z-index     : 10;
+    margin-right: 20px !important;
+    background  : #f5f5f5 !important;
+    opacity     : 0.7;
+
+    &:hover {
+        opacity   : 1;
+        background: #fff;
+    }
+}
+
+.slick-arrow:before {
+    font-family: 'Glyphicons Halflings' !important;
+    font-style : normal;
+    font-weight: 400;
+    background : #fff;
+    border     : 2px solid #d7d7d7;
+    padding    : 10px;
+    text-align : center;
+    color      : #959595 !important;
+}
+
+// arrow left-right
+.slick-prev:before {
+    content: "\003C" !important;
+}
+
+.slick-next:before {
+    content: "\003E" !important;
+}
+
+//------End--------customize slick slider-------------
+
+.home-footer {
+    display        : flex;
+    justify-content: center;
+    border         : 0 solid #d7d7d7;
+
+}
