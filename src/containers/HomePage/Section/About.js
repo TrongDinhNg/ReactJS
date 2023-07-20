@@ -15,9 +15,9 @@ class About extends Component {
                             height="320"
                             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                             title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
-                            frameborder="0"
+                            frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
+                            allowFullScreen
                         ></iframe>
                     </div>
                     <div className="about-content-right text-center">
