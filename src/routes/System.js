@@ -22,6 +22,10 @@ class System extends Component {
                                 path="/system/user-redux"
                                 component={UserRedux}
                             />
+                            <Route
+                                path="/system/user-doctor"
+                                component={UserRedux}
+                            />
 
                             <Route
                                 component={() => {

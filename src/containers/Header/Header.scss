@@ -12,6 +12,10 @@
     .end-header {
         display: flex;
 
+        .welcome {
+            padding: 10px;
+        }
+
         .language-vi {
             padding: 10px;
             cursor : pointer;
