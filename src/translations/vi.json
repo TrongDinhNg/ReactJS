@@ -41,5 +41,24 @@
             "handbook": "Cẩm nang",
             "manage-handbook": "quản lý cẩm nang"
         }
+    },
+    "manage-user":{
+        "add":"Thêm mới người dùng",
+        "email":"Email",
+        "password":"Mật khẩu",
+        "first-name":"Tên",
+        "last-name":"Họ",
+        "address":"Địa chỉ",
+        "phone-number":"Số điện thoại",
+        "image":"Ảnh",
+        "position":"Chức danh",
+        "gender":"Giới tính",
+        "choose":"Lựa chọn",
+        "male":"Nam",
+        "female":"Nữ",
+        "role":"Vai trò",
+        "admin":"Admin",
+        "doctor":"Bác sĩ",
+        "patient":"Bệnh nhân"
     }
 }

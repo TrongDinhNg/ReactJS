@@ -41,5 +41,24 @@
             "handbook": "Handbooks",
             "manage-handbook": "Manage Handbooks"
         }
+    },
+    "manage-user":{
+        "add":"Create a new user",
+        "email":"Email",
+        "password":"Pasword",
+        "first-name":"First name",
+        "last-name":"Last name",
+        "address":"Address",
+        "phone-number":"Phone number",
+        "image":"Image",
+        "position":"Position",
+        "gender":"Sex",
+        "choose":"Choose",
+        "male":"Male",
+        "female":"Female",
+        "role":"Role",
+        "admin":"Admin",
+        "doctor":"Doctor",
+        "patient":"Patient"
     }
 }
