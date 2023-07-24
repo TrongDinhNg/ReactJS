@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../../utils/constant";
 import * as actions from "../../../store/actions";
+import "./UserRedux.scss";
+import Lightbox from "react-18-image-lightbox";
+import "react-18-image-lightbox/style.css";
 
 class UserRedux extends Component {
     constructor(props) {
@@ -11,23 +14,48 @@ class UserRedux extends Component {
             arrGender: [],
             arrRole: [],
             arrPosition: [],
+            previewImgUrl: "",
+            isOpen: false,
         };
     }
 
     async componentDidMount() {
         this.props.getGenderStart();
+        this.props.getPositionStart();
+        this.props.getRoleStart();
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.genderRedux !== this.props.genderRedux) {
             this.setState({
                 arrGender: this.props.genderRedux,
+                arrPosition: this.props.positionRedux,
+                arrRole: this.props.roleRedux,
+            });
+        }
+        if (prevProps.positionRedux !== this.props.positionRedux) {
+            this.setState({
+                arrPosition: this.props.positionRedux,
+            });
+        }
+        if (prevProps.roleRedux !== this.props.roleRedux) {
+            this.setState({
+                arrRole: this.props.roleRedux,
             });
         }
     }
-
     changeLanguage = (language) => {
         //fire redux event: actions
         this.props.changeLanguageAppRedux(language);
+    };
+    HandleOnchangeImg = (event) => {
+        let data = event.target.files;
+        let file = data[0];
+        if (file) {
+            let objectUrl = URL.createObjectURL(file);
+            this.setState({
+                previewImgUrl: objectUrl,
+            });
+        }
     };
 
     render() {
@@ -35,21 +63,28 @@ class UserRedux extends Component {
         let roles = this.state.arrRole;
         let postions = this.state.arrPosition;
         const language = this.props.language;
-        console.log("check props from Redux: ", this.props.genderRedux);
+        console.log("check state from component: ", this.state);
+        let isLoadingGender = this.props.isLoadingGender;
+        let previewImg = this.state.previewImgUrl;
         return (
             <div className="user-redux-container">
                 <div className="title">Learn React-Redux</div>
                 <div className="user-redux-body">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-6 mt-3">
+                        <div className="row col-6">
+                            <div className="col-12 mt-3">
                                 <h2>
                                     <FormattedMessage id="manage-user.add" />
                                 </h2>
+                                <h3>
+                                    {isLoadingGender === true
+                                        ? "Loading Gender"
+                                        : ""}
+                                </h3>
                             </div>
                             <form action="/post-crud" method="POST">
                                 <div className="row mt-3">
-                                    <div className="form-group col-md-3">
+                                    <div className="form-group col-md-6">
                                         <label>
                                             <FormattedMessage id="manage-user.email" />
                                         </label>
@@ -61,7 +96,7 @@ class UserRedux extends Component {
                                             autoComplete="username"
                                         />
                                     </div>
-                                    <div className="form-group col-md-3">
+                                    <div className="form-group col-md-6">
                                         <label>
                                             <FormattedMessage id="manage-user.password" />
                                         </label>
@@ -75,7 +110,7 @@ class UserRedux extends Component {
                                     </div>
                                 </div>
                                 <div className="row mt-3">
-                                    <div className="form-group col-md-3">
+                                    <div className="form-group col-md-6">
                                         <label>
                                             <FormattedMessage id="manage-user.first-name" />
                                         </label>
@@ -86,7 +121,7 @@ class UserRedux extends Component {
                                             name="firstName"
                                         />
                                     </div>
-                                    <div className="form-group col-md-3">
+                                    <div className="form-group col-md-6">
                                         <label>
                                             <FormattedMessage id="manage-user.last-name" />
                                         </label>
@@ -100,7 +135,7 @@ class UserRedux extends Component {
                                 </div>
 
                                 <div className="row mt-3">
-                                    <div className="form-group col-md-6">
+                                    <div className="form-group col-md-12">
                                         <label>
                                             <FormattedMessage id="manage-user.address" />
                                         </label>
@@ -113,17 +148,7 @@ class UserRedux extends Component {
                                     </div>
                                 </div>
                                 <div className="row mt-3">
-                                    <div className="form-group col-md-3">
-                                        <label>
-                                            <FormattedMessage id="manage-user.image" />
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            name="image"
-                                        />
-                                    </div>
-                                    <div className="form-group col-md-3">
+                                    <div className="form-group col-md-6">
                                         <label>
                                             <FormattedMessage id="manage-user.position" />
                                         </label>
@@ -146,10 +171,63 @@ class UserRedux extends Component {
                                                 })}
                                         </select>
                                     </div>
+                                    <div className="form-group col-md-6">
+                                        <label>
+                                            <FormattedMessage id="manage-user.image" />
+                                        </label>
+                                        <div className="preview-img-container">
+                                            <input
+                                                id="previewImg"
+                                                type="file"
+                                                className="form-control"
+                                                name="image"
+                                                hidden
+                                                onChange={(event) =>
+                                                    this.HandleOnchangeImg(
+                                                        event,
+                                                    )
+                                                }
+                                            />
+                                            <label
+                                                className="label-upload"
+                                                htmlFor="previewImg"
+                                            >
+                                                Tải ảnh
+                                                <i class="fas fa-upload"></i>
+                                            </label>
+                                            <div
+                                                className="preview-img"
+                                                style={{
+                                                    backgroundImage: `url(${previewImg})`,
+                                                }}
+                                                onClick={() => {
+                                                    if (
+                                                        !this.state
+                                                            .previewImgUrl
+                                                    )
+                                                        return;
+                                                    this.setState({
+                                                        isOpen: true,
+                                                    });
+                                                }}
+                                            >
+                                                {this.state.isOpen && (
+                                                    <Lightbox
+                                                        mainSrc={previewImg}
+                                                        onCloseRequest={() =>
+                                                            this.setState({
+                                                                isOpen: false,
+                                                            })
+                                                        }
+                                                    />
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="row mt-3">
-                                    <div className="form-group col-md-2">
+                                    <div className="form-group col-md-6">
                                         <label>
                                             <FormattedMessage id="manage-user.phone-number" />
                                         </label>
@@ -159,7 +237,7 @@ class UserRedux extends Component {
                                             name="phoneNumber"
                                         />
                                     </div>
-                                    <div className="form-group col-md-2">
+                                    <div className="form-group col-md-3">
                                         <label>
                                             <FormattedMessage id="manage-user.gender" />
                                         </label>
@@ -182,7 +260,7 @@ class UserRedux extends Component {
                                                 })}
                                         </select>
                                     </div>
-                                    <div className="form-group col-md-2">
+                                    <div className="form-group col-md-3">
                                         <label>
                                             <FormattedMessage id="manage-user.role" />
                                         </label>
@@ -225,12 +303,17 @@ const mapStateToProps = (state) => {
     return {
         language: state.app.language,
         genderRedux: state.admin.genders,
+        positionRedux: state.admin.positions,
+        roleRedux: state.admin.roles,
+        isLoadingGender: state.admin.isLoadingGender,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getGenderStart: () => dispatch(actions.fetchGenderStart()),
+        getPositionStart: () => dispatch(actions.fetchPositionStart()),
+        getRoleStart: () => dispatch(actions.fetchRoleStart()),
         // processLogout: () => dispatch(actions.processLogout()),
         // changeLanguageAppRedux: (language) =>
         //     dispatch(actions.changeLanguageApp(language)),
