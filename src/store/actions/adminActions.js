@@ -149,3 +149,29 @@ export const deleteUserSuccess = () => ({
 export const deleteUserFailed = () => ({
     type: actionTypes.DELETE_USER_FAILED,
 });
+export const updateUser = (userId) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await userService.editUserService(userId);
+            console.log("check call API delete user: ", res);
+            if (res && res.errCode === 0) {
+                toast.success("UPDATE USER SUCCESS!");
+                dispatch(updateUserSuccess());
+                dispatch(fetchAllUsersStart());
+            } else {
+                toast.error("UPDATE USER ERROR");
+                dispatch(updateUserFailed());
+            }
+        } catch (e) {
+            toast.error("UPDATE USER ERROR");
+            updateUserFailed();
+            console.log("updateUser Err: ", e);
+        }
+    };
+};
+export const updateUserSuccess = () => ({
+    type: actionTypes.EDIT_USER_SUCCESS,
+});
+export const updateUserFailed = () => ({
+    type: actionTypes.EDIT_USER_SUCCESS,
+});

@@ -24,6 +24,9 @@ class TableManageUser extends Component {
     handleDeleteUser = (user) => {
         this.props.deleteUser(user.id);
     };
+    handleEditUser = (user) => {
+        this.props.editUserFromParent(user);
+    };
 
     render() {
         let arrUsers = this.state.arrUsers;
@@ -101,6 +104,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchUserREdux: () => dispatch(actions.fetchAllUsersStart()),
         deleteUser: (userId) => dispatch(actions.deleteUser(userId)),
+        // editUser: (userId) => dispatch(actions.updateUser(userId)),
     };
 };
 

@@ -59,6 +59,8 @@
         "role":"Vai trò",
         "admin":"Admin",
         "doctor":"Bác sĩ",
-        "patient":"Bệnh nhân"
+        "patient":"Bệnh nhân",
+        "save":"Lưu User",
+        "edit":"Lưu thay đổi"
     }
 }

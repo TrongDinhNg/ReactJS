@@ -14,7 +14,6 @@ import Home from "../routes/Home";
 import Login from "./Auth/Login";
 import System from "../routes/System";
 import HomePage from "./HomePage/HomePage";
-import { CustomToastCloseButton } from "../components/CustomToast";
 
 class App extends Component {
     handlePersistorState = () => {

@@ -59,6 +59,8 @@
         "role":"Role",
         "admin":"Admin",
         "doctor":"Doctor",
-        "patient":"Patient"
+        "patient":"Patient",
+        "save":"Save User",
+        "edit":"Edit User"
     }
 }
