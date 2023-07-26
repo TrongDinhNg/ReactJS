@@ -6,6 +6,7 @@ import * as actions from "../../../store/actions";
 import "./UserRedux.scss";
 import Lightbox from "react-18-image-lightbox";
 import "react-18-image-lightbox/style.css";
+import TableManageUser from "./TableManageUser";
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -54,6 +55,20 @@ class UserRedux extends Component {
             this.setState({
                 arrRole: roleArr,
                 role: roleArr && roleArr !== 0 ? roleArr[0].key : "",
+            });
+        }
+        if (prevProps.users !== this.props.users) {
+            this.setState({
+                email: "",
+                password: "",
+                firstName: "",
+                lastName: "",
+                phoneNumber: "",
+                position: "",
+                address: "",
+                gender: "",
+                role: "",
+                avatar: "",
             });
         }
     }
@@ -425,6 +440,10 @@ class UserRedux extends Component {
                                 </button>
                             </form>
                         </div>
+
+                        <div className="row col-12">
+                            <TableManageUser />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -439,6 +458,7 @@ const mapStateToProps = (state) => {
         positionRedux: state.admin.positions,
         roleRedux: state.admin.roles,
         isLoadingGender: state.admin.isLoadingGender,
+        users: state.admin.users,
     };
 };
 
