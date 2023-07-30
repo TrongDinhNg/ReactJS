@@ -78,6 +78,7 @@ export const createNewUser = (data) => {
     return async (dispatch, getState) => {
         try {
             let res = await userService.createNewUserService(data);
+            console.log("check save user: ", res);
             if (res && res.errCode === 0) {
                 toast.success("Create User Success!");
                 dispatch(saveUserSuccess());

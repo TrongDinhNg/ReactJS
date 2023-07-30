@@ -7,6 +7,7 @@ import "./UserRedux.scss";
 import Lightbox from "react-18-image-lightbox";
 import "react-18-image-lightbox/style.css";
 import TableManageUser from "./TableManageUser";
+import CommonUtils from "../../../utils/CommonUtils";
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -76,6 +77,7 @@ class UserRedux extends Component {
                 // role: roleArr && roleArr !== 0 ? roleArr[0].key : "",
                 avatar: "",
                 action: CRUD_ACTIONS.CREATE,
+                previewImg: "",
             });
         }
     }
@@ -83,14 +85,16 @@ class UserRedux extends Component {
         //fire redux event: actions
         this.props.changeLanguageAppRedux(language);
     };
-    HandleOnchangeImg = (event) => {
+    HandleOnchangeImg = async (event) => {
         let data = event.target.files;
         let file = data[0];
         if (file) {
+            let base64 = await CommonUtils.getBase64(file);
+            console.log("test base64: ", base64);
             let objectUrl = URL.createObjectURL(file);
             this.setState({
                 previewImgUrl: objectUrl,
-                avatar: file,
+                avatar: base64,
             });
         }
     };
@@ -113,6 +117,7 @@ class UserRedux extends Component {
                 gender: this.state.gender,
                 roleId: this.state.role,
                 positionId: this.state.position,
+                avatar: this.state.avatar,
             });
         }
         if (action === CRUD_ACTIONS.EDIT) {
@@ -125,9 +130,11 @@ class UserRedux extends Component {
                 gender: this.state.gender,
                 roleId: this.state.role,
                 positionId: this.state.position,
+                avatar: this.state.avatar,
             });
         }
     };
+
     onChangeInput = (event, id) => {
         let copyState = { ...this.state };
         copyState[id] = event.target.value;
@@ -156,19 +163,33 @@ class UserRedux extends Component {
         return isValid;
     };
     editUserFromParent = (user) => {
-        this.setState({
-            email: user.email,
-            password: "password",
-            firstName: user.firstName,
-            lastName: user.lastName,
-            phoneNumber: user.phoneNumber,
-            address: user.address,
-            gender: user.gender,
-            roleId: user.roleId,
-            position: user.positionId,
-            userEditId: user.id,
-            action: CRUD_ACTIONS.EDIT,
-        });
+        let imgBase64 = "";
+        if (user.image) {
+            imgBase64 = new Buffer(user.image, "base64").toString("binary");
+            // imgBase64 = Buffer.from(user.image).toString("base64");
+            // imgBase64 = `data:image/png;base64,${imgBase64}`;
+        }
+        console.log("imgBase64: ", imgBase64);
+        this.setState(
+            {
+                email: user.email,
+                password: "password",
+                firstName: user.firstName,
+                lastName: user.lastName,
+                phoneNumber: user.phoneNumber,
+                address: user.address,
+                gender: user.gender,
+                roleId: user.roleId,
+                position: user.positionId,
+                userEditId: user.id,
+                action: CRUD_ACTIONS.EDIT,
+                avatar: "",
+                previewImgUrl: imgBase64,
+            },
+            () => {
+                console.log("previewImgUrl", this.state.previewImgUrl);
+            },
+        );
     };
 
     render() {
@@ -361,7 +382,7 @@ class UserRedux extends Component {
                                                 id="previewImg"
                                                 type="file"
                                                 className="form-control"
-                                                name="image"
+                                                name="avatar"
                                                 hidden
                                                 onChange={(event) => {
                                                     this.HandleOnchangeImg(
@@ -380,7 +401,7 @@ class UserRedux extends Component {
                                             <div
                                                 className="preview-img"
                                                 style={{
-                                                    backgroundImage: `url(${previewImg})`,
+                                                    backgroundImage: `url(${this.state.previewImgUrl})`,
                                                 }}
                                                 onClick={() => {
                                                     if (
