@@ -78,7 +78,7 @@ export const createNewUser = (data) => {
     return async (dispatch, getState) => {
         try {
             let res = await userService.createNewUserService(data);
-            console.log("check save user: ", res);
+            // console.log("check save user: ", res);
             if (res && res.errCode === 0) {
                 toast.success("Create User Success!");
                 dispatch(saveUserSuccess());
@@ -104,7 +104,6 @@ export const fetchAllUsersStart = () => {
     return async (dispatch, getState) => {
         try {
             let res = await userService.getAllUsers("ALL");
-            console.log("check call API all user: ", res);
             if (res && res.errCode === 0) {
                 dispatch(fetchAllUsersSuccess(res.user.reverse()));
             } else {
@@ -175,4 +174,28 @@ export const updateUserSuccess = () => ({
 });
 export const updateUserFailed = () => ({
     type: actionTypes.EDIT_USER_SUCCESS,
+});
+
+export const fetchTopDoctor = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await userService.getTopDoctorService("4");
+            console.log("check api get topdoctor: ", res);
+            if (res && res.errCode === 0) {
+                dispatch(fetchTopDoctorSuccess(res.data));
+            } else {
+                dispatch(fetchTopDoctorFailed());
+            }
+        } catch (e) {
+            fetchTopDoctorFailed();
+            console.log("fetchTopDoctor Err: ", e);
+        }
+    };
+};
+export const fetchTopDoctorSuccess = (data) => ({
+    type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
+    data: data,
+});
+export const fetchTopDoctorFailed = () => ({
+    type: actionTypes.FETCH_TOP_DOCTOR_FAIL,
 });

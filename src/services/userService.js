@@ -24,5 +24,9 @@ const userService = {
     getAllcodeService(inputType) {
         return axios.get(`/api/allcode?type=${inputType}`);
     },
+
+    getTopDoctorService(limit) {
+        return axios.get(`/api/top-doctor-home?limit=${limit}`);
+    },
 };
 export default userService;

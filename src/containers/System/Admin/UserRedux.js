@@ -42,7 +42,7 @@ class UserRedux extends Component {
             let genderArr = this.props.genderRedux;
             this.setState({
                 arrGender: genderArr,
-                gender: genderArr && genderArr !== 0 ? genderArr[0].key : "",
+                gender: genderArr && genderArr !== 0 ? genderArr[0].keyMap : "",
             });
         }
         if (prevProps.positionRedux !== this.props.positionRedux) {
@@ -50,14 +50,16 @@ class UserRedux extends Component {
             this.setState({
                 arrPosition: positionArr,
                 position:
-                    positionArr && positionArr !== 0 ? positionArr[0].key : "",
+                    positionArr && positionArr !== 0
+                        ? positionArr[0].keyMap
+                        : "",
             });
         }
         if (prevProps.roleRedux !== this.props.roleRedux) {
             let roleArr = this.props.roleRedux;
             this.setState({
                 arrRole: roleArr,
-                role: roleArr && roleArr !== 0 ? roleArr[0].key : "",
+                role: roleArr && roleArr !== 0 ? roleArr[0].keyMap : "",
             });
         }
         if (prevProps.users !== this.props.users) {
@@ -71,10 +73,10 @@ class UserRedux extends Component {
                 lastName: "",
                 phoneNumber: "",
                 address: "",
-                // gender: genderArr && genderArr !== 0 ? genderArr[0].key : "",
+                // gender: genderArr && genderArr !== 0 ? genderArr[0].keyMap : "",
                 // position:
-                //     positionArr && positionArr !== 0 ? positionArr[0].key : "",
-                // role: roleArr && roleArr !== 0 ? roleArr[0].key : "",
+                //     positionArr && positionArr !== 0 ? positionArr[0].keyMap : "",
+                // role: roleArr && roleArr !== 0 ? roleArr[0].keyMap : "",
                 avatar: "",
                 action: CRUD_ACTIONS.CREATE,
                 previewImg: "",
@@ -169,27 +171,21 @@ class UserRedux extends Component {
             // imgBase64 = Buffer.from(user.image).toString("base64");
             // imgBase64 = `data:image/png;base64,${imgBase64}`;
         }
-        console.log("imgBase64: ", imgBase64);
-        this.setState(
-            {
-                email: user.email,
-                password: "password",
-                firstName: user.firstName,
-                lastName: user.lastName,
-                phoneNumber: user.phoneNumber,
-                address: user.address,
-                gender: user.gender,
-                roleId: user.roleId,
-                position: user.positionId,
-                userEditId: user.id,
-                action: CRUD_ACTIONS.EDIT,
-                avatar: "",
-                previewImgUrl: imgBase64,
-            },
-            () => {
-                console.log("previewImgUrl", this.state.previewImgUrl);
-            },
-        );
+        this.setState({
+            email: user.email,
+            password: "password",
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phoneNumber: user.phoneNumber,
+            address: user.address,
+            gender: user.gender,
+            role: user.roleId,
+            position: user.positionId,
+            userEditId: user.id,
+            action: CRUD_ACTIONS.EDIT,
+            avatar: "",
+            previewImgUrl: imgBase64,
+        });
     };
 
     render() {
@@ -362,7 +358,7 @@ class UserRedux extends Component {
                                                     return (
                                                         <option
                                                             key={index}
-                                                            value={item.key}
+                                                            value={item.keyMap}
                                                         >
                                                             {language ===
                                                             LANGUAGES.VI
@@ -468,7 +464,7 @@ class UserRedux extends Component {
                                                     return (
                                                         <option
                                                             key={index}
-                                                            value={item.key}
+                                                            value={item.keyMap}
                                                         >
                                                             {language ===
                                                             LANGUAGES.VI
@@ -500,7 +496,7 @@ class UserRedux extends Component {
                                                     return (
                                                         <option
                                                             key={index}
-                                                            value={item.key}
+                                                            value={item.keyMap}
                                                         >
                                                             {language ===
                                                             LANGUAGES.VI

@@ -30,7 +30,7 @@ class TableManageUser extends Component {
 
     render() {
         let arrUsers = this.state.arrUsers;
-        console.log("Check Table Redux arrUsers: ", arrUsers);
+        // console.log("Check Table Redux arrUsers: ", arrUsers);
         return (
             <div className="users-container">
                 <div className="title text-center"> User Manage</div>
