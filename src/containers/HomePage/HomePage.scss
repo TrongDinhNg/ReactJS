@@ -129,7 +129,11 @@
     }
 }
 
-//------Start--------customize slick slider-------------
+//------Start--------customize slick slider-------------\
+.slick-disabled {
+    display: none !important;
+}
+
 .slick-list {
     background-color  : transparent;
     height            : 260px;

@@ -62,5 +62,10 @@
         "patient":"Patient",
         "save":"Save User",
         "edit":"Edit User"
+    },
+    "homepage":{
+        "outstanding-doctor":"Doctor of the Week Spotlight",
+        "more-info":"more info"
+
     }
 }

@@ -14,7 +14,7 @@ class HomePage extends Component {
     render() {
         let settings = {
             dots: false,
-            infinite: true,
+            infinite: false,
             arrows: true,
             speed: 500,
             slidesToShow: 4,

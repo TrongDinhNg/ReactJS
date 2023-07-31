@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { LANGUAGES } from "../../../utils/constant";
 import * as actions from "../../../store/actions";
-
+import { FormattedMessage } from "react-intl";
 import Slider from "react-slick";
 // Import css files
 import "slick-carousel/slick/slick.css";
@@ -28,14 +28,16 @@ class OutstandingDoctor extends Component {
     render() {
         // console.log("check props topDoctors: ", this.props.topDoctors);
         let topDoctors = this.state.arrDoctor;
-        topDoctors = topDoctors.concat(topDoctors).concat(topDoctors);
-
         return (
             <div className="section section-outstandingDoctor">
                 <div className="section-container">
                     <div className="section-header">
-                        <span>Bác sĩ nổi bậc tuần qua</span>
-                        <button className="see-more">Xem thêm</button>
+                        <span>
+                            <FormattedMessage id="homepage.outstanding-doctor" />
+                        </span>
+                        <button className="see-more">
+                            <FormattedMessage id="homepage.more-info" />
+                        </button>
                     </div>
                     <div className="section-body">
                         <Slider {...this.props.settings}>

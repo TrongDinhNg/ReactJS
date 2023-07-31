@@ -62,5 +62,9 @@
         "patient":"Bệnh nhân",
         "save":"Lưu User",
         "edit":"Lưu thay đổi"
+    },
+    "homepage":{
+        "outstanding-doctor":"Bác sĩ nổi bật tuần qua",
+        "more-info":"xem thêm"
     }
 }
