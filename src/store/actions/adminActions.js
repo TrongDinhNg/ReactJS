@@ -180,7 +180,6 @@ export const fetchTopDoctor = () => {
     return async (dispatch, getState) => {
         try {
             let res = await userService.getTopDoctorService("4");
-            console.log("check api get topdoctor: ", res);
             if (res && res.errCode === 0) {
                 dispatch(fetchTopDoctorSuccess(res.data));
             } else {
@@ -199,3 +198,50 @@ export const fetchTopDoctorSuccess = (data) => ({
 export const fetchTopDoctorFailed = () => ({
     type: actionTypes.FETCH_TOP_DOCTOR_FAIL,
 });
+
+export const fetchAllDoctor = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await userService.getTopDoctorService("4");
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_DOCTOR_SUCCESS,
+                    dataDoctors: res.data,
+                });
+            } else {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_DOCTOR_FAIL,
+                });
+            }
+        } catch (e) {
+            console.log("fetchAllDoctor Err: ", e);
+            dispatch({
+                type: actionTypes.FETCH_ALL_DOCTOR_FAIL,
+            });
+        }
+    };
+};
+export const saveInforDoctor = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await userService.saveInforDoctorService(data);
+            if (res && res.errCode === 0) {
+                toast.success("Save Infor Doctor Success!");
+                dispatch({
+                    type: actionTypes.SAVE_INFOR_DOCTOR_SUCCESS,
+                });
+            } else {
+                toast.error("Save Infor Doctor Err!");
+                dispatch({
+                    type: actionTypes.SAVE_INFOR_DOCTOR_FAIL,
+                });
+            }
+        } catch (e) {
+            toast.error("Save Infor Doctor Err!");
+            console.log("saveInforDoctor Err: ", e);
+            dispatch({
+                type: actionTypes.SAVE_INFOR_DOCTOR_FAIL,
+            });
+        }
+    };
+};

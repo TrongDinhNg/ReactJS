@@ -28,5 +28,11 @@ const userService = {
     getTopDoctorService(limit) {
         return axios.get(`/api/top-doctor-home?limit=${limit}`);
     },
+    getAllDoctor() {
+        return axios.get(`/api/get-all-doctor`);
+    },
+    saveInforDoctorService(data) {
+        return axios.post("/api/save-infor-doctor", data);
+    },
 };
 export default userService;
