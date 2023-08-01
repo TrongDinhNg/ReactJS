@@ -1,0 +1,18 @@
+.more-infor {
+    display      : flex;
+    gap          : 10px;
+    margin-bottom: 10px;
+
+    .content-left {
+        width: 30%;
+
+    }
+
+    .content-right {
+        width: 70%;
+    }
+}
+
+.custom-preview-md {
+    height: auto;
+}
