@@ -34,5 +34,8 @@ const userService = {
     saveInforDoctorService(data) {
         return axios.post("/api/save-infor-doctor", data);
     },
+    getDetailDoctorService(id) {
+        return axios.get(`/api/get-infor-doctor-by-id?id=${id}`);
+    },
 };
 export default userService;

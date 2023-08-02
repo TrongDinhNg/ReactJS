@@ -105,107 +105,109 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="home-header-banner">
-                    <div className="search">
-                        <div className="title">
-                            <div className="title1">
-                                <FormattedMessage id="banner.title1" />
+                {this.props.isShowBaner === true && (
+                    <div className="home-header-banner">
+                        <div className="search">
+                            <div className="title">
+                                <div className="title1">
+                                    <FormattedMessage id="banner.title1" />
 
-                                <br></br>
-                                <b>
-                                    {" "}
-                                    <FormattedMessage id="banner.title2" />
-                                </b>
+                                    <br></br>
+                                    <b>
+                                        {" "}
+                                        <FormattedMessage id="banner.title2" />
+                                    </b>
+                                </div>
+                            </div>
+
+                            <div className="search-form">
+                                <i className="fas fa-search"></i>
+                                <div className="search-input">
+                                    <input placeholder="Khám chuyên khoa" />
+                                </div>
                             </div>
                         </div>
 
-                        <div className="search-form">
-                            <i className="fas fa-search"></i>
-                            <div className="search-input">
-                                <input placeholder="Khám chuyên khoa" />
-                            </div>
+                        <div className="option">
+                            <ul>
+                                <li>
+                                    <a href="/">
+                                        <i className="far fa-hospital"></i>
+                                        <div className="text">
+                                            <FormattedMessage id="option.child1" />
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <i className="fas fa-phone-volume"></i>
+                                        <div className="text">
+                                            <FormattedMessage id="option.child2" />
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <i className="fas fa-notes-medical"></i>
+                                        <div className="text">
+                                            <FormattedMessage id="option.child3" />
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <i className="fas fa-vial"></i>
+                                        <div className="text">
+                                            <FormattedMessage id="option.child4" />
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <i className="fas fa-heartbeat"></i>
+
+                                        <div className="text">
+                                            <FormattedMessage id="option.child5" />
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <i className="far fa-smile"></i>
+                                        <div className="text">
+                                            <FormattedMessage id="option.child6" />
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <i className="fas fa-procedures"></i>
+                                        <div className="text">
+                                            <FormattedMessage id="option.child7" />
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <i className="fas fa-syringe"></i>
+                                        <div className="text">
+                                            <FormattedMessage id="option.child8" />
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <i className="fas fa-walking"></i>
+
+                                        <div className="text">
+                                            <FormattedMessage id="option.child9" />
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-
-                    <div className="option">
-                        <ul>
-                            <li>
-                                <a href="/">
-                                    <i className="far fa-hospital"></i>
-                                    <div className="text">
-                                        <FormattedMessage id="option.child1" />
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/">
-                                    <i className="fas fa-phone-volume"></i>
-                                    <div className="text">
-                                        <FormattedMessage id="option.child2" />
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/">
-                                    <i className="fas fa-notes-medical"></i>
-                                    <div className="text">
-                                        <FormattedMessage id="option.child3" />
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/">
-                                    <i className="fas fa-vial"></i>
-                                    <div className="text">
-                                        <FormattedMessage id="option.child4" />
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/">
-                                    <i className="fas fa-heartbeat"></i>
-
-                                    <div className="text">
-                                        <FormattedMessage id="option.child5" />
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/">
-                                    <i className="far fa-smile"></i>
-                                    <div className="text">
-                                        <FormattedMessage id="option.child6" />
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/">
-                                    <i className="fas fa-procedures"></i>
-                                    <div className="text">
-                                        <FormattedMessage id="option.child7" />
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/">
-                                    <i className="fas fa-syringe"></i>
-                                    <div className="text">
-                                        <FormattedMessage id="option.child8" />
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/">
-                                    <i className="fas fa-walking"></i>
-
-                                    <div className="text">
-                                        <FormattedMessage id="option.child9" />
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                )}
             </React.Fragment>
         );
     }

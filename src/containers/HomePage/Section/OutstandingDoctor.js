@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { LANGUAGES } from "../../../utils/constant";
 import * as actions from "../../../store/actions";
 import { FormattedMessage } from "react-intl";
+import { withRouter } from "react-router";
 import Slider from "react-slick";
 // Import css files
 import "slick-carousel/slick/slick.css";
@@ -25,6 +26,10 @@ class OutstandingDoctor extends Component {
     componentDidMount() {
         this.props.fetchTopDoctor();
     }
+    handleViewDetailDoctor = (doctor) => {
+        console.log("check view infor doctor: ", doctor.id);
+        this.props.history.push(`/detail-doctor/${doctor.id}`);
+    };
     render() {
         // console.log("check props topDoctors: ", this.props.topDoctors);
         let topDoctors = this.state.arrDoctor;
@@ -60,6 +65,11 @@ class OutstandingDoctor extends Component {
                                         <div
                                             className="img-customize text-center"
                                             key={index}
+                                            onClick={() =>
+                                                this.handleViewDetailDoctor(
+                                                    item,
+                                                )
+                                            }
                                         >
                                             <div
                                                 className="section-logo doctor-logo"
@@ -100,4 +110,6 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor);
+export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor),
+);

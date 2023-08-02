@@ -22,7 +22,7 @@ class HomePage extends Component {
         };
         return (
             <>
-                <HomeHeader />
+                <HomeHeader isShowBanner={true} />
                 <Speciality settings={settings} />
                 <MedicalFacility settings={settings} />
                 <OutstandingDoctor settings={settings} />
