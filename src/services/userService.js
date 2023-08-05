@@ -37,5 +37,8 @@ const userService = {
     getDetailDoctorService(id) {
         return axios.get(`/api/get-infor-doctor-by-id?id=${id}`);
     },
+    getMarkdownByDoctorIdService(doctorId) {
+        return axios.get(`/api/get-markdown-by-doctor-id?doctorId=${doctorId}`);
+    },
 };
 export default userService;

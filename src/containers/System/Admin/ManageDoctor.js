@@ -6,7 +6,8 @@ import MDEditor from "@uiw/react-md-editor";
 import MarkdownIt from "markdown-it";
 
 import Select from "react-select";
-import { LANGUAGES } from "../../../utils/constant";
+import { CRUD_ACTIONS, LANGUAGES } from "../../../utils/constant";
+import userService from "../../../services/userService";
 
 class ManageDoctor extends Component {
     constructor(props) {
@@ -17,6 +18,8 @@ class ManageDoctor extends Component {
             contentHTML: "",
             description: "",
             allDoctor: "",
+            hasOldData: false, //kiểm tra detail bác sĩ đã có hay chưa
+            action: "",
         };
     }
 
@@ -62,15 +65,37 @@ class ManageDoctor extends Component {
         this.setState({ contentHTML });
     };
     handleSaveContentMarkdown = () => {
+        let { hasOldData } = this.state;
         this.props.saveInforDoctor({
             contentHTML: this.state.contentHTML,
             contentMarkdown: this.state.contentMarkdown,
             description: this.state.description,
             doctorId: this.state.selectedDoctor.value,
+            action:
+                hasOldData === true ? CRUD_ACTIONS.EDIT : CRUD_ACTIONS.CREATE,
         });
     };
-    handleChange = (selectedDoctor) => {
+
+    handleChangeSelect = async (selectedDoctor) => {
         this.setState({ selectedDoctor });
+        let md = await userService.getMarkdownByDoctorIdService(
+            selectedDoctor.value,
+        );
+        if (md && md.errCode === 0) {
+            this.setState({
+                contentMarkdown: md.data.contentMarkdown,
+                contentHTML: md.data.contentHTML,
+                description: md.data.description,
+                hasOldData: true,
+            });
+        } else {
+            this.setState({
+                contentMarkdown: "",
+                contentHTML: "",
+                description: "",
+                hasOldData: false,
+            });
+        }
     };
     onChangeDesc = (event) => {
         this.setState({ description: event.target.value });
@@ -78,6 +103,7 @@ class ManageDoctor extends Component {
 
     render() {
         let allDoctor = this.state.allDoctor;
+        let { hasOldData } = this.state;
         return (
             <>
                 <div className="container">
@@ -88,7 +114,7 @@ class ManageDoctor extends Component {
                                 <label>Chọn bác sĩ</label>
                                 <Select
                                     value={this.state.selectedDoctor}
-                                    onChange={this.handleChange}
+                                    onChange={this.handleChangeSelect}
                                     options={allDoctor}
                                 />
                             </div>
@@ -113,13 +139,22 @@ class ManageDoctor extends Component {
                         </div>
                         <div>
                             <button
-                                className=""
+                                className={
+                                    hasOldData === true
+                                        ? "update-content-doctor btn btn-warning mt-3"
+                                        : "save-content-doctor btn btn-info mt-3"
+                                }
                                 onClick={() => this.handleSaveContentMarkdown()}
                             >
-                                Lưu thông tin
+                                {hasOldData === true ? (
+                                    <span>Update Infor</span>
+                                ) : (
+                                    <span>Save Infor</span>
+                                )}
                             </button>
                         </div>
                         <div className="custom-preview-md">
+                            <h3>View Using Markdown Preview</h3>
                             <MDEditor
                                 preview="preview"
                                 hideToolbar
@@ -128,6 +163,8 @@ class ManageDoctor extends Component {
                                 // enableScroll={false}
                                 height={"400px"}
                             ></MDEditor>
+                            <h3>View Using Render HTML</h3>
+
                             <div
                                 dangerouslySetInnerHTML={{
                                     __html: this.state.contentHTML,

@@ -226,7 +226,11 @@ export const saveInforDoctor = (data) => {
         try {
             let res = await userService.saveInforDoctorService(data);
             if (res && res.errCode === 0) {
-                toast.success("Save Infor Doctor Success!");
+                if (data.action === "CREATE") {
+                    toast.success("Save Infor Doctor Success!");
+                } else if (data.action === "EDIT") {
+                    toast.success("Update Infor Doctor Success!");
+                }
                 dispatch({
                     type: actionTypes.SAVE_INFOR_DOCTOR_SUCCESS,
                 });

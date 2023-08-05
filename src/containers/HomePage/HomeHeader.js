@@ -105,7 +105,7 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
-                {this.props.isShowBaner === true && (
+                {this.props.isShowBanner === true && (
                     <div className="home-header-banner">
                         <div className="search">
                             <div className="title">
