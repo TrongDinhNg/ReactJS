@@ -71,5 +71,11 @@
         "outstanding-doctor":"Doctor of the Week Spotlight",
         "more-info":"more info"
 
+    },
+    "manage-schedule":{
+        "title":"Manage doctor's appointment schedule",
+        "choose-doctor":" Choose Doctor",
+        "choose-date":"Choose a medical appointment date",
+        "save":"Save"
     }
 }
