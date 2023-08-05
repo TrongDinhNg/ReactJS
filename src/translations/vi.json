@@ -40,7 +40,12 @@
             "manage-specialty": "Quản lý chuyên khoa",
             "handbook": "Cẩm nang",
             "manage-handbook": "quản lý cẩm nang"
+        },
+        "doctor":{
+           "manage-schedule":"Quản lý lịch khám",
+           "schedule":"Lịch khám" 
         }
+
     },
     "manage-user":{
         "add":"Thêm mới người dùng",

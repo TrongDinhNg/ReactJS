@@ -40,7 +40,11 @@
             "manage-specialty": "Manage Specialties",
             "handbook": "Handbooks",
             "manage-handbook": "Manage Handbooks"
-        }
+        },
+        "doctor":{
+            "manage-schedule":"Manage Schedule",
+            "schedule":"Schedule" 
+         }
     },
     "manage-user":{
         "add":"Create a new user",
