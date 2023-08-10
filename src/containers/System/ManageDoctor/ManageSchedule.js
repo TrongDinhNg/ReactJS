@@ -4,11 +4,12 @@ import { FormattedMessage } from "react-intl";
 import "./ManageSchedule.scss";
 import Select from "react-select";
 import * as actions from "../../../store/actions";
-import { LANGUAGES, dateFormat } from "../../../utils/constant";
+import { LANGUAGES } from "../../../utils/constant";
 import DatePicker from "../../../components/Input/DatePicker";
 import { toast } from "react-toastify";
 import _ from "lodash";
-import moment from "moment";
+
+import userService from "../../../services/userService";
 
 class ManageSchedule extends Component {
     constructor(props) {
@@ -83,7 +84,7 @@ class ManageSchedule extends Component {
             isSelectedTime: item.isSelectedTime,
         });
     };
-    handleSaveSchedule = () => {
+    handleSaveSchedule = async () => {
         let { rangeScheduleTime, selectedDoctor, currentDate } = this.state;
         let result = [];
         if (!currentDate) {
@@ -94,7 +95,8 @@ class ManageSchedule extends Component {
             toast.error("Please pick a doctor.");
             return;
         }
-        let fomatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+        //let fomatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+        let fomatedDate = new Date(currentDate).getTime();
         if (rangeScheduleTime && rangeScheduleTime.length > 0) {
             let selectedTime = rangeScheduleTime.filter(
                 (item) => item.isSelectedTime === true,
@@ -105,7 +107,7 @@ class ManageSchedule extends Component {
                     object = {
                         doctorId: selectedDoctor.value,
                         date: fomatedDate,
-                        time: item.keyMap,
+                        timeType: item.keyMap,
                     };
                     return object;
                 });
@@ -114,7 +116,14 @@ class ManageSchedule extends Component {
                 return;
             }
         }
-        return result;
+        let res = await userService.saveBulkScheduleDoctor({
+            arrSchedule: result,
+            doctorId: selectedDoctor.value,
+            fomatedDate: fomatedDate,
+        });
+
+        console.log("result", result);
+        console.log("res", res);
     };
     render() {
         let { rangeScheduleTime } = this.state;
