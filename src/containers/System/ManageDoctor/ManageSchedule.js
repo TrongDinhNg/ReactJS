@@ -116,14 +116,11 @@ class ManageSchedule extends Component {
                 return;
             }
         }
-        let res = await userService.saveBulkScheduleDoctor({
+        await userService.saveBulkScheduleDoctor({
             arrSchedule: result,
             doctorId: selectedDoctor.value,
             fomatedDate: fomatedDate,
         });
-
-        console.log("result", result);
-        console.log("res", res);
     };
     render() {
         let { rangeScheduleTime } = this.state;

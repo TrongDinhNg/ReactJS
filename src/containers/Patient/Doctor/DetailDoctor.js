@@ -5,6 +5,7 @@ import HomeFooter from "../../HomePage/HomeFooter";
 import "./DetailDoctor.scss";
 import userService from "../../../services/userService";
 import { LANGUAGES } from "../../../utils/constant";
+import DoctorSchedule from "./DoctorSchedule";
 
 class DetailDoctor extends Component {
     constructor(props) {
@@ -73,7 +74,22 @@ class DetailDoctor extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="appointment-doctor"></div>
+                    <div className="schedule-doctor">
+                        <div className="container">
+                            <div className="row">
+                                <div className="content-left col-7">
+                                    <DoctorSchedule
+                                        doctorId={
+                                            detailDoctor && detailDoctor.id
+                                                ? detailDoctor.id
+                                                : -1
+                                        }
+                                    />
+                                </div>
+                                <div className="content-right col-5"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div className="detail-doctor">
                         <div className="content-detail-doctor">
                             {detailDoctor &&

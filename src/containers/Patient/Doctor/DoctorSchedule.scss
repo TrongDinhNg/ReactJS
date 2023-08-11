@@ -1,0 +1,53 @@
+.doctor-schedule-container {
+    width : auto;
+    height: 140px;
+    border: 1px solid red;
+
+    .select-day {
+        select {
+            text-transform: capitalize;
+            background    : transparent;
+            border        : none;
+            color         : #337ab7;
+            border-bottom : 1px solid #999;
+            border-radius : 0;
+            font-weight   : bold;
+            padding       : 3px;
+        }
+    }
+
+    .apointment-time {
+        .title-apointment-time {
+            text-transform: uppercase;
+            margin        : 10px 0;
+            font-weight   : 500;
+
+            .icon-calendar {
+                padding: 0 5px;
+            }
+        }
+
+        .time-slots {
+            margin   : 2px 10px;
+            display  : flex;
+            grid-gap : 20px;
+            grid-gap : 20px;
+            gap      : 7px;
+            flex-wrap: wrap;
+
+            button {
+                border-radius: 3px;
+                min-width    : 150px;
+                background   : #fff8ae;
+                padding      : 5px 10px;
+                border       : none;
+
+                &:hover {
+                    text-decoration: none;
+                    cursor         : pointer;
+                    box-shadow     : 0px 0px 0px 2px #33B0E3 inset;
+                }
+            }
+        }
+    }
+}
