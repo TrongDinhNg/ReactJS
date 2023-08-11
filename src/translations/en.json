@@ -77,5 +77,13 @@
         "choose-doctor":" Choose Doctor",
         "choose-date":"Choose a medical appointment date",
         "save":"Save"
+    },
+    "patient":{
+        "detail-doctor":{
+            "schedule":"Schedule",
+            "no-schedule":"We are unable to schedule an appointment for you in this time slot. Please choose another time.",
+            "choose":"Choose",
+            "book-free":"and book (free)"
+        }
     }
 }

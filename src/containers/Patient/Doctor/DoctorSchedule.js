@@ -16,31 +16,43 @@ class DoctorSchedule extends Component {
         };
     }
     async componentDidMount() {
-        this.setArrDays();
+        const { doctorId } = this.props;
+
+        let allDays = this.getArrDays();
+        if (allDays && allDays.length > 0) {
+            let res = await userService.getScheduleDoctorByDate(
+                doctorId,
+                allDays[0].value,
+            );
+            this.setState({
+                allDays,
+                allAvailableTime: res.data ? res.data : [],
+            });
+        }
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.language !== prevProps.language) {
-            this.setArrDays();
+            let allDays = this.getArrDays();
+            this.setState({
+                allDays,
+            });
         }
     }
-    setArrDays = () => {
+    getArrDays = () => {
         let allDays = [];
         for (let i = 0; i < 7; i++) {
             let date = moment().add(i, "days");
             let label =
                 this.props.language === LANGUAGES.VI
                     ? date.format("dddd - DD/MM")
-                    : date.locale("en").format("ddd - DD/MM");
+                    : date.locale("en", localization).format("ddd - DD/MM");
 
             allDays.push({
                 label: label,
                 value: date.startOf("day").valueOf(),
             });
         }
-
-        this.setState({
-            allDays: allDays,
-        });
+        return allDays;
     };
     handleOnChangeSelect = async (e) => {
         const { doctorId } = this.props;
@@ -55,7 +67,6 @@ class DoctorSchedule extends Component {
     render() {
         let { allDays, allAvailableTime } = this.state;
         let { language } = this.props;
-        console.log("allAvailableTime", allAvailableTime);
         return (
             <div className="doctor-schedule-container">
                 <div className="select-day">
@@ -74,23 +85,33 @@ class DoctorSchedule extends Component {
                 <div className="apointment-time">
                     <div className="title-apointment-time">
                         <i className="fas fa-calendar-alt icon-calendar"></i>
-                        Lịch khám
+                        <FormattedMessage id="patient.detail-doctor.schedule" />
                     </div>
                     <div className="time-slots">
                         {allAvailableTime && allAvailableTime.length > 0 ? (
-                            allAvailableTime.map((i, index) => {
-                                let timeDisplay =
-                                    language === LANGUAGES.VI
-                                        ? i.timeTypeData.valueVi
-                                        : i.timeTypeData.valueEn;
-                                return (
-                                    <button key={index}>{timeDisplay}</button>
-                                );
-                            })
+                            <>
+                                <div className="time-slots-btns">
+                                    {allAvailableTime.map((i, index) => {
+                                        let timeDisplay =
+                                            language === LANGUAGES.VI
+                                                ? i.timeTypeData.valueVi
+                                                : i.timeTypeData.valueEn;
+                                        return (
+                                            <button key={index}>
+                                                {timeDisplay}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                                <div className="guide">
+                                    <FormattedMessage id="patient.detail-doctor.choose" />
+                                    <i className="far fa-hand-point-up"></i>
+                                    <FormattedMessage id="patient.detail-doctor.book-free" />
+                                </div>
+                            </>
                         ) : (
                             <div>
-                                Khong co lich hen trong khoang thoi gian nay,
-                                vui long chon lai!!
+                                <FormattedMessage id="patient.detail-doctor.no-schedule" />
                             </div>
                         )}
                     </div>

@@ -59,7 +59,7 @@ class ManageSchedule extends Component {
         let optionDoctors = {};
         if (data && data.length > 0) {
             result = data.map((i, index) => {
-                let labelVi = `${i.lastName} ${i.selectedTimeName}`;
+                let labelVi = `${i.lastName} ${i.firstName}`;
                 let labelEn = `${i.firstName} ${i.lastName}`;
                 optionDoctors = {
                     label: language === LANGUAGES.VI ? labelVi : labelEn,
@@ -116,15 +116,21 @@ class ManageSchedule extends Component {
                 return;
             }
         }
-        await userService.saveBulkScheduleDoctor({
+        let res = await userService.saveBulkScheduleDoctor({
             arrSchedule: result,
             doctorId: selectedDoctor.value,
             fomatedDate: fomatedDate,
         });
+        if (res && res.errCode === 0) {
+            toast.success("Appointment successfully saved!!!");
+        } else {
+            toast.error("Appointment save failed!!!");
+        }
     };
     render() {
         let { rangeScheduleTime } = this.state;
         let language = this.props.language;
+        let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
 
         return (
             <div className="manage-schedule-container">
@@ -150,7 +156,7 @@ class ManageSchedule extends Component {
                             <DatePicker
                                 onChange={this.handleDatePicker}
                                 value={this.state.currentDate}
-                                minDate={new Date()}
+                                minDate={yesterday}
                                 className="form-control"
                             />
                         </div>

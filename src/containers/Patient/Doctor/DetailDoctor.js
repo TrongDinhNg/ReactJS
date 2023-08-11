@@ -79,11 +79,12 @@ class DetailDoctor extends Component {
                             <div className="row">
                                 <div className="content-left col-7">
                                     <DoctorSchedule
-                                        doctorId={
-                                            detailDoctor && detailDoctor.id
-                                                ? detailDoctor.id
-                                                : -1
-                                        }
+                                        // doctorId={
+                                        //     detailDoctor && detailDoctor.id
+                                        //         ? detailDoctor.id
+                                        //         : -1
+                                        // }
+                                        doctorId={this.props.match.params.id}
                                     />
                                 </div>
                                 <div className="content-right col-5"></div>

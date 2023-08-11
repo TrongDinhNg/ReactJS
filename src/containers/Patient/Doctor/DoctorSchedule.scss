@@ -1,7 +1,7 @@
 .doctor-schedule-container {
-    width : auto;
-    height: 140px;
-    border: 1px solid red;
+    width     : auto;
+    min-height: 140px;
+    border    : 1px solid red;
 
     .select-day {
         select {
@@ -28,26 +28,43 @@
         }
 
         .time-slots {
-            margin   : 2px 10px;
-            display  : flex;
-            grid-gap : 20px;
-            grid-gap : 20px;
-            gap      : 7px;
-            flex-wrap: wrap;
 
-            button {
-                border-radius: 3px;
-                min-width    : 150px;
-                background   : #fff8ae;
-                padding      : 5px 10px;
-                border       : none;
+            .time-slots-btns {
+                margin        : 2px 10px;
+                display       : flex;
+                grid-gap      : 20px;
+                grid-gap      : 20px;
+                gap           : 7px;
+                flex-wrap     : wrap;
+                padding-bottom: 10px;
 
-                &:hover {
-                    text-decoration: none;
-                    cursor         : pointer;
-                    box-shadow     : 0px 0px 0px 2px #33B0E3 inset;
+                button {
+                    border-radius: 3px;
+                    min-width    : 150px;
+                    background   : #fff8ae;
+                    padding      : 5px 10px;
+                    border       : none;
+
+                    &:hover {
+                        text-decoration: none;
+                        cursor         : pointer;
+                        box-shadow     : 0px 0px 0px 2px #33B0E3 inset;
+                    }
+                }
+            }
+
+            .guide {
+                font-size: 12px;
+                color    : #333;
+                padding  : 0 10px;
+
+                i {
+                    font-size: 17px;
+                    padding  : 0 3px;
                 }
             }
         }
+
+
     }
 }
