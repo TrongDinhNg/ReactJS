@@ -85,5 +85,23 @@
             "choose":"Choose",
             "book-free":"and book (free)"
         }
+       
+    },
+    "admin":{
+        "manage-doctor":{
+            "title":"Generate more doctor information",
+            "choose-doctor":"Choose doctor",
+            "referral-details":"Referal details",
+            "save":"Save Infor",
+            "update":"Update Infor",
+            "price":"Price",
+            "payment":"Payment",
+            "province":"Province",
+            "clinic":"The Clinic",
+            "clinic-address":"Clinic address",
+            "note":"Note"
+
+
+        }
     }
 }
