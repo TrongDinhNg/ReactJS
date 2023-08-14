@@ -84,7 +84,14 @@
             "no-schedule":"We are unable to schedule an appointment for you in this time slot. Please choose another time.",
             "choose":"Choose",
             "book-free":"and book (free)"
-        }
+        },
+        "extra-infor-doctor": {
+            "text-address": "Address of examination",
+            "price": "Examination price:",
+            "detail": "See details",
+            "payment": "The patient can pay the cost in the form of: ",
+            "hide-price": "Hide price list"
+          }
        
     },
     "admin":{
@@ -100,8 +107,6 @@
             "clinic":"The Clinic",
             "clinic-address":"Clinic address",
             "note":"Note"
-
-
         }
     }
 }
