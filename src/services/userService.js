@@ -53,5 +53,11 @@ const userService = {
             `/api/get-extra-infor-doctor-by-id?doctorId=${doctorId}`,
         );
     },
+    getProfileDoctorsService(doctorId) {
+        return axios.get(`/api/get-profile-doctor-by-id?doctorId=${doctorId}`);
+    },
+    postPatientBookAppointmentService(data) {
+        return axios.post("/api/patient-book-appointment", data);
+    },
 };
 export default userService;
