@@ -107,13 +107,15 @@ class BookingModal extends Component {
 
     buildDoctorName = (dataTime) => {
         const { language } = this.props;
-        if (dataTime && _.isEmpty(dataTime)) {
+        if (dataTime && !_.isEmpty(dataTime)) {
             let name =
                 language === LANGUAGES.VI
                     ? `${dataTime.doctorData.lastName} ${dataTime.doctorData.firstName}`
                     : `${dataTime.doctorData.firstName} ${dataTime.doctorData.lastName}`;
+
             return name;
         }
+        return "";
     };
 
     handleConfirmBooking = async () => {

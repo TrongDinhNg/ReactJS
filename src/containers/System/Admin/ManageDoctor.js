@@ -266,8 +266,9 @@ class ManageDoctor extends Component {
                                     className="form-control"
                                     value={description}
                                     onChange={(event) =>
-                                        this.onChangeDesc(event)
+                                        this.handleOnchangeText(event)
                                     }
+                                    name="description"
                                 ></textarea>
                             </div>
                         </div>
