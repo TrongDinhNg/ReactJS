@@ -59,5 +59,8 @@ const userService = {
     postPatientBookAppointmentService(data) {
         return axios.post("/api/patient-book-appointment", data);
     },
+    postVerifyBookAppointmentService(data) {
+        return axios.post("/api/verify-book-appointment", data);
+    },
 };
 export default userService;
