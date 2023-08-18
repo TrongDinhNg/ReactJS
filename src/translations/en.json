@@ -121,7 +121,9 @@
             "province":"Province",
             "clinic":"The Clinic",
             "clinic-address":"Clinic address",
-            "note":"Note"
+            "note":"Note",
+            "specialty": "Specialty",
+            "select-clinic": "Clinic"
         }
     }
 }

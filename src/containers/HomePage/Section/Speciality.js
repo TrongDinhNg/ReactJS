@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import Slider from "react-slick";
 import userService from "../../../services/userService";
 import { FormattedMessage } from "react-intl";
+import { withRouter } from "react-router";
+
 class Speciality extends Component {
     constructor(props) {
         super(props);
@@ -19,6 +20,9 @@ class Speciality extends Component {
             });
         }
     }
+    handleViewDetailSpecialty = (specialty) => {
+        this.props.history.push(`/detail-specialty/${specialty.id}`);
+    };
     render() {
         let { dataSpecialty } = this.state;
         return (
@@ -41,6 +45,11 @@ class Speciality extends Component {
                                         <div
                                             className="img-customize"
                                             key={index}
+                                            onClick={() =>
+                                                this.handleViewDetailSpecialty(
+                                                    item,
+                                                )
+                                            }
                                         >
                                             <div
                                                 className="section-logo speciality-logo"
@@ -73,4 +82,6 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Speciality);
+export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(Speciality),
+);
