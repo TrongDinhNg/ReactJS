@@ -69,7 +69,8 @@
     },
     "homepage":{
         "outstanding-doctor":"Doctor of the Week Spotlight",
-        "more-info":"more info"
+        "more-info":"more info",
+        "popular-specialty":"Popular specialties"
 
     },
     "manage-schedule":{

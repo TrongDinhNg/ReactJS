@@ -65,5 +65,8 @@ const userService = {
     createNewSpecialtyService(data) {
         return axios.post("/api/create-new-specialty", data);
     },
+    getAllSpecialtyService() {
+        return axios.get(`/api/get-all-specialty`);
+    },
 };
 export default userService;

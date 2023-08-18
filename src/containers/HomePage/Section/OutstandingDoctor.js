@@ -27,7 +27,6 @@ class OutstandingDoctor extends Component {
         this.props.fetchTopDoctor();
     }
     handleViewDetailDoctor = (doctor) => {
-        console.log("check view infor doctor: ", doctor.id);
         this.props.history.push(`/detail-doctor/${doctor.id}`);
     };
     render() {
@@ -49,9 +48,6 @@ class OutstandingDoctor extends Component {
                             {topDoctors &&
                                 topDoctors.length > 0 &&
                                 topDoctors.map((item, index) => {
-                                    if (index === 0) {
-                                        console.log("item", item);
-                                    }
                                     let nameVi = `${item.positionData.valueVi} ${item.lastName} ${item.firstName}`;
                                     let nameEn = `${item.positionData.valueEn} ${item.firstName} ${item.lastName}`;
                                     let previewImgUrl = "";

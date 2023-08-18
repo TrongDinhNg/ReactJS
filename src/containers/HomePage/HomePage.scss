@@ -104,8 +104,10 @@
 
                     //logo sections
                     &.speciality-logo {
-                        background-image: url(../../assets/speciality/co-xuong-khop.jpg);
+                        // background-image: url(../../assets/speciality/co-xuong-khop.jpg);
+                        margin-bottom: 5px;
                     }
+
 
                     &.doctor-logo {
                         // background-image: url(../../assets/doctor/doctor.png);
@@ -122,6 +124,15 @@
 
                     &.handbook-logo {
                         background-image: url(../../assets/handbook/gan-nhiem-mo-y-khoa-van-hanh.png);
+                    }
+                }
+
+                .specialty-name {
+                    color    : #111;
+                    font-size: 13px;
+
+                    &:hover {
+                        color: #45c3d2;
                     }
                 }
 

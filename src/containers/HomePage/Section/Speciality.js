@@ -2,45 +2,58 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Slider from "react-slick";
-// Import css files
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
+import userService from "../../../services/userService";
+import { FormattedMessage } from "react-intl";
 class Speciality extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            dataSpecialty: [],
+        };
+    }
+    async componentDidMount() {
+        let res = await userService.getAllSpecialtyService();
+        if (res && res.errCode === 0) {
+            this.setState({
+                dataSpecialty: res.data,
+            });
+        }
+    }
     render() {
+        let { dataSpecialty } = this.state;
         return (
             <div className="section section-speciality">
                 <div className="section-container">
                     <div className="section-header">
-                        <span>Chuyên Khoa phổ biến</span>
-                        <button className="see-more">Xem thêm</button>
+                        <span>
+                            <FormattedMessage id="homepage.popular-specialty" />
+                        </span>
+                        <button className="see-more">
+                            <FormattedMessage id="homepage.more-info" />
+                        </button>
                     </div>
                     <div className="section-body">
                         <Slider {...this.props.settings}>
-                            <div className="img-customize">
-                                <div className="section-logo speciality-logo"></div>
-                                <span>Cơ Xương khớp</span>
-                            </div>
-                            <div className="img-customize">
-                                <div className="section-logo speciality-logo"></div>
-                                <span>Cơ Xương khớp2</span>
-                            </div>
-                            <div className="img-customize">
-                                <div className="section-logo speciality-logo"></div>
-                                <span>Cơ Xương khớp3</span>
-                            </div>
-                            <div className="img-customize">
-                                <div className="section-logo speciality-logo"></div>
-                                <span>Cơ Xương khớp4</span>
-                            </div>
-                            <div className="img-customize">
-                                <div className="section-logo speciality-logo"></div>
-                                <span>Cơ Xương khớp5</span>
-                            </div>
-                            <div className="img-customize">
-                                <div className="section-logo speciality-logo"></div>
-                                <span>Cơ Xương khớp6</span>
-                            </div>
+                            {dataSpecialty &&
+                                dataSpecialty.length > 0 &&
+                                dataSpecialty.map((item, index) => {
+                                    return (
+                                        <div
+                                            className="img-customize"
+                                            key={index}
+                                        >
+                                            <div
+                                                className="section-logo speciality-logo"
+                                                style={{
+                                                    backgroundImage: `url(${item.image})`,
+                                                }}
+                                            ></div>
+                                            <span className="specialty-name">
+                                                {item.name}
+                                            </span>
+                                        </div>
+                                    );
+                                })}
                         </Slider>
                     </div>
                 </div>
