@@ -73,5 +73,8 @@ const userService = {
             `/api/get-detail-specialty-by-id?id=${data.id}&location=${data.location}`,
         );
     },
+    createNewClinic(data) {
+        return axios.post("/api/create-new-clinic", data);
+    },
 };
 export default userService;
