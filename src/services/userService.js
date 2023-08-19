@@ -76,5 +76,11 @@ const userService = {
     createNewClinic(data) {
         return axios.post("/api/create-new-clinic", data);
     },
+    getAllClinic() {
+        return axios.get("/api/get-clinic");
+    },
+    getAllDetailClinicById(data) {
+        return axios.get(`/api/get-detail-clinic-by-id?id=${data.id}`);
+    },
 };
 export default userService;
