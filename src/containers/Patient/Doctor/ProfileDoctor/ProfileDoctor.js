@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import NumberFormat from "react-number-format";
 import moment from "moment";
@@ -19,7 +19,6 @@ class ProfileDoctor extends Component {
 
     async componentDidMount() {
         const { doctorId } = this.props;
-        console.log(doctorId);
         if (doctorId) {
             let res = await userService.getProfileDoctorsService(doctorId);
             this.setState({
@@ -62,14 +61,17 @@ class ProfileDoctor extends Component {
         const { dataProfile } = this.state;
         const {
             language,
-
+            doctorId,
             isShowDescriptionDoctor,
             dataTime,
-
+            isShowLinkDetail,
             isShowPrice,
+            isShowProvince,
         } = this.props;
+        console.log("dataProfile", dataProfile);
         let nameVi = `${dataProfile.positionData?.valueVi}, ${dataProfile.lastName} ${dataProfile.firstName}`;
         let nameEn = `${dataProfile.positionData?.valueEn}, ${dataProfile.firstName} ${dataProfile.lastName}`;
+
         return (
             <div className="profile-doctor-container">
                 <div className="intro-doctor container">
@@ -78,7 +80,18 @@ class ProfileDoctor extends Component {
                         style={{
                             backgroundImage: `url(${dataProfile?.image})`,
                         }}
-                    ></div>
+                    >
+                        {isShowLinkDetail === true && (
+                            <div className="view-detail-doctor">
+                                <Link
+                                    className="custom-link"
+                                    to={`/detail-doctor/${doctorId}`}
+                                >
+                                    Xem thêm
+                                </Link>
+                            </div>
+                        )}
+                    </div>
                     <div className="content-right">
                         <h3 className="up">
                             {language === LANGUAGES.VI ? nameVi : nameEn}
@@ -88,8 +101,19 @@ class ProfileDoctor extends Component {
                                 ? dataProfile?.Markdown?.description
                                 : this.renderTimeBooking(dataTime)}
                         </p>
+                        {isShowProvince === true && (
+                            <div>
+                                <i className="fas fa-map-marker-alt custom-location"></i>
+                                {language === LANGUAGES.VI
+                                    ? dataProfile?.Doctor_Infor
+                                          ?.provinceTypeData.valueVi
+                                    : dataProfile?.Doctor_Infor
+                                          ?.provinceTypeData.valueEn}
+                            </div>
+                        )}
                     </div>
                 </div>
+
                 {isShowPrice === true && (
                     <div className="price">
                         <FormattedMessage id="patient.booking-modal.price" />

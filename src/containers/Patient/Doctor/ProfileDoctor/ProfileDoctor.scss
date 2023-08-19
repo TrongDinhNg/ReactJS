@@ -9,6 +9,19 @@
             width              : 80px;
             height             : 80px;
             border-radius      : 50%;
+
+            .view-detail-doctor {
+                margin-left: 8px;
+                margin-top : 89px;
+
+                .custom-link {
+                    text-decoration: none;
+                    /* Loại bỏ dấu gạch ngang */
+
+                    color: #45c3d2;
+
+                }
+            }
         }
 
         .content-right {
@@ -17,11 +30,18 @@
 
             .up {
                 font-weight: 600;
+                color      : #45c3d2;
             }
 
             .down {
                 text-align: justify;
             }
+
+            .custom-location {
+                margin: 0 5px;
+            }
         }
     }
+
+
 }
