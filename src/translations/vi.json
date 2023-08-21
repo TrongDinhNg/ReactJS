@@ -43,6 +43,7 @@
         },
         "doctor":{
            "manage-schedule":"Quản lý lịch khám",
+           "manage-patient":"Quản lý Bệnh nhân",
            "schedule":"Lịch khám" 
         }
 

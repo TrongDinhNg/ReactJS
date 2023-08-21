@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions";
 import "./TableManageUser.scss";
-import MDEditor from "@uiw/react-md-editor";
 
 class TableManageUser extends Component {
     constructor(props) {
@@ -77,7 +76,6 @@ class TableManageUser extends Component {
                                                     >
                                                         <i className="fas fa-edit"></i>
                                                     </button>
-
                                                     <button
                                                         type="button"
                                                         className="btn btn-delete btn-primary"
@@ -96,12 +94,6 @@ class TableManageUser extends Component {
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div style={{ height: "500px" }}>
-                    <MDEditor
-                        value={this.state.value}
-                        onChange={this.onChange}
-                    />
                 </div>
             </>
         );

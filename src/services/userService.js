@@ -82,5 +82,13 @@ const userService = {
     getAllDetailClinicById(data) {
         return axios.get(`/api/get-detail-clinic-by-id?id=${data.id}`);
     },
+    getAllPatientForDoctor(data) {
+        return axios.get(
+            `/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}`,
+        );
+    },
+    postConfirmedExamination(data) {
+        return axios.post(`/api/send-examination-comfirmed`, data);
+    },
 };
 export default userService;
