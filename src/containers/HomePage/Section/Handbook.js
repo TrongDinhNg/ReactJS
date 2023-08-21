@@ -19,27 +19,27 @@ class Handbook extends Component {
                         <Slider {...this.props.settings}>
                             <div className="img-customize">
                                 <div className="section-logo handbook-logo"></div>
-                                <span>Cơ Xương khớp</span>
+                                <span>Cẩm Nang 1</span>
                             </div>
                             <div className="img-customize">
                                 <div className="section-logo handbook-logo"></div>
-                                <span>Cơ Xương khớp2</span>
+                                <span>Cẩm Nang 2</span>
                             </div>
                             <div className="img-customize">
                                 <div className="section-logo handbook-logo"></div>
-                                <span>Cơ Xương khớp3</span>
+                                <span>Cẩm Nang 3</span>
                             </div>
                             <div className="img-customize">
                                 <div className="section-logo handbook-logo"></div>
-                                <span>Cơ Xương khớp4</span>
+                                <span>Cẩm Nang 4</span>
                             </div>
                             <div className="img-customize">
                                 <div className="section-logo handbook-logo"></div>
-                                <span>Cơ Xương khớp5</span>
+                                <span>Cẩm Nang 5</span>
                             </div>
                             <div className="img-customize">
                                 <div className="section-logo handbook-logo"></div>
-                                <span>Cơ Xương khớp6</span>
+                                <span>Cẩm Nang 6</span>
                             </div>
                         </Slider>
                     </div>

@@ -1,0 +1,30 @@
+.home-footer-container {
+    background-color: #45c3d2;
+
+    .home-footer {
+        padding        : 20px 0;
+        display        : flex;
+        justify-content: center;
+
+        button {
+
+            border       : none;
+            border-radius: 50%;
+            /* Làm cho nút tròn */
+            padding      : 10px;
+            /* Tùy chỉnh kích thước nút */
+            margin       : 0 5px;
+            /* Khoảng cách giữa các nút */
+        }
+
+
+    }
+
+    .copyright {
+        background-color: rgba(0, 0, 0, 0.2);
+        color           : white;
+        padding         : 10px;
+        text-align      : center;
+
+    }
+}
