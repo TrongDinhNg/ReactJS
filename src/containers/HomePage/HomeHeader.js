@@ -16,12 +16,12 @@ class HomeHeader extends Component {
         return (
             <React.Fragment>
                 <div className="home-header-container">
-                    <div className="home-header-content">
-                        <div className="left-content">
+                    <div className="home-header-content container">
+                        <div className="left-content col-2">
                             <i className="fas fa-bars"></i>
                             <div className="header-logo"></div>
                         </div>
-                        <div className="center-content">
+                        <div className="center-content col-8">
                             <div className="child-content">
                                 <div>
                                     <b>
@@ -67,16 +67,16 @@ class HomeHeader extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="right-content">
-                            <div className="support">
+                        <div className="right-content col-2">
+                            <div className="support col-4 d-flex align-items-center">
                                 <i className="fas fa-question-circle"></i>
                                 <FormattedMessage id="home-header.support" />
                             </div>
                             <div
                                 className={
                                     language === LANGUAGES.VI
-                                        ? "language-vi active"
-                                        : "language-vi"
+                                        ? "language-vi active col-2"
+                                        : "language-vi col-2"
                                 }
                             >
                                 <span
@@ -90,8 +90,8 @@ class HomeHeader extends Component {
                             <div
                                 className={
                                     language === LANGUAGES.EN
-                                        ? "language-en active"
-                                        : "language-en"
+                                        ? "language-en active col-2"
+                                        : "language-en col-2"
                                 }
                             >
                                 <span

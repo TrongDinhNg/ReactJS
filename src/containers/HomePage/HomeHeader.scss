@@ -24,14 +24,14 @@
             align-items: center;
 
             i {
-                font-size   : 25px;
-                color       : gray;
-                cursor      : pointer;
-                padding-left: 50px;
+                font-size      : 25px;
+                color          : gray;
+                cursor         : pointer;
+                // padding-left: 50px;
             }
 
             .header-logo {
-                width              : 44%;
+                width              : 50%;
                 height             : 81%;
                 background         : url('../../assets/logo.svg');
                 background-position: center center;
@@ -58,15 +58,30 @@
             }
         }
 
+        @media screen and (max-width: 768px) {
+            .center-content {
+                display: none;
+            }
+
+            .left-content {
+                width: 50%;
+            }
+
+            .right-content {
+                width: 50%;
+            }
+
+        }
+
         .right-content {
-            width          : 25%;
+            // width          : 25%;
             align-items    : center;
             display        : flex;
             justify-content: flex-end;
 
 
             .support {
-                padding-right: 85px;
+                // padding-right: 15px;
 
                 i {
                     color        : #45c3d2;
