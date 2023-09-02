@@ -1,0 +1,38 @@
+.choose-health-facilities {
+
+
+    .list-h-f {
+        padding: 10px 0;
+
+
+        .custom-link {
+            /* Loại bỏ dấu gạch ngang */
+            text-decoration: none;
+            color          : #363434;
+
+            &:hover {
+
+                color: #45c3d2;
+            }
+
+        }
+
+        .img-customize {
+            padding-left       : 0px;
+            padding-right      : 5px;
+            margin             : 20px 0;
+            cursor             : pointer;
+            height             : 100px;
+            width              : 178px;
+            background-position: center center;
+            background-repeat  : no-repeat;
+            background-size    : contain;
+            padding-top        : 50%;
+            border             : 2px solid;
+            border-radius      : 5px;
+            border-color       : rgb(213, 213, 213);
+
+        }
+
+    }
+}

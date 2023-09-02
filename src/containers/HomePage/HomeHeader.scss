@@ -19,9 +19,10 @@
 
 
         .left-content {
-            width      : 25%;
-            display    : flex;
-            align-items: center;
+            width       : 25%;
+            display     : flex;
+            align-items : center;
+            padding-left: 88px;
 
             i {
                 font-size      : 25px;
@@ -31,8 +32,8 @@
             }
 
             .header-logo {
-                width              : 50%;
-                height             : 81%;
+                width              : 53%;
+                height             : 75%;
                 background         : url('../../assets/logo.svg');
                 background-position: center center;
                 background-repeat  : no-repeat;
@@ -54,6 +55,18 @@
 
                 .sub-title {
                     font-size: 12px;
+                }
+
+                .custom-link {
+                    /* Loại bỏ dấu gạch ngang */
+                    text-decoration: none;
+                    color          : #363434;
+
+                    &:hover {
+
+                        color: #45c3d2;
+                    }
+
                 }
             }
         }
@@ -81,7 +94,7 @@
 
 
             .support {
-                // padding-right: 15px;
+                padding-right: 10px;
 
                 i {
                     color        : #45c3d2;

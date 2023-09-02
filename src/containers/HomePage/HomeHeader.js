@@ -4,6 +4,7 @@ import "./HomeHeader.scss";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../utils/constant";
 import { changeLanguageApp } from "../../store/actions";
+import { Link } from "react-router-dom";
 
 class HomeHeader extends Component {
     changeLanguage = (language) => {
@@ -16,37 +17,45 @@ class HomeHeader extends Component {
         return (
             <React.Fragment>
                 <div className="home-header-container">
-                    <div className="home-header-content container">
+                    <div className="home-header-content">
                         <div className="left-content col-2">
                             <i className="fas fa-bars"></i>
                             <div className="header-logo"></div>
                         </div>
                         <div className="center-content col-8">
                             <div className="child-content">
-                                <div>
-                                    <b>
-                                        <FormattedMessage id="home-header.speciality" />
-                                    </b>
-                                </div>
-                                <div className="sub-title">
-                                    <FormattedMessage id="home-header.search-doctor" />
-                                </div>
+                                <Link
+                                    className="custom-link"
+                                    to={"/choose-specialty"}
+                                >
+                                    <div>
+                                        <b>
+                                            <FormattedMessage id="home-header.speciality" />
+                                        </b>
+                                    </div>
+                                    <div className="sub-title">
+                                        <FormattedMessage id="home-header.search-doctor" />
+                                    </div>
+                                </Link>
+                            </div>
+                            <div className="child-content">
+                                <Link
+                                    className="custom-link"
+                                    to={"/choose-health-facility"}
+                                >
+                                    <div>
+                                        <b>
+                                            <FormattedMessage id="home-header.medical-facility" />
+                                        </b>
+                                    </div>
+                                    <div className="sub-title">
+                                        <FormattedMessage id="home-header.select-room" />
+                                    </div>
+                                </Link>
                             </div>
                             <div className="child-content">
                                 <div>
                                     <b>
-                                        {" "}
-                                        <FormattedMessage id="home-header.medical-facility" />
-                                    </b>
-                                </div>
-                                <div className="sub-title">
-                                    <FormattedMessage id="home-header.select-room" />
-                                </div>
-                            </div>
-                            <div className="child-content">
-                                <div>
-                                    <b>
-                                        {" "}
                                         <FormattedMessage id="home-header.doctor" />
                                     </b>
                                 </div>
@@ -57,12 +66,10 @@ class HomeHeader extends Component {
                             <div className="child-content">
                                 <div>
                                     <b>
-                                        {" "}
                                         <FormattedMessage id="home-header.checkup-package" />
                                     </b>
                                 </div>
                                 <div className="sub-title">
-                                    {" "}
                                     <FormattedMessage id="home-header.general-health-check" />
                                 </div>
                             </div>
@@ -111,10 +118,8 @@ class HomeHeader extends Component {
                             <div className="title">
                                 <div className="title1">
                                     <FormattedMessage id="banner.title1" />
-
                                     <br></br>
                                     <b>
-                                        {" "}
                                         <FormattedMessage id="banner.title2" />
                                     </b>
                                 </div>
@@ -131,7 +136,7 @@ class HomeHeader extends Component {
                         <div className="option">
                             <ul>
                                 <li>
-                                    <a href="/">
+                                    <a href="/choose-specialty">
                                         <i className="far fa-hospital"></i>
                                         <div className="text">
                                             <FormattedMessage id="option.child1" />

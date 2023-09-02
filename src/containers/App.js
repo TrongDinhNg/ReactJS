@@ -20,6 +20,9 @@ import VerifyEmail from "./VerifyEmail/VerifyEmail";
 import DetailSpecialty from "./Patient/Specialty/DetailSpecialty";
 import DetailClinic from "./Patient/Clinic/DetailClinic";
 
+import ChooseSpecialty from "./HomePage/Navigation/chooseSpecialty.js";
+import ChooseHealthFacility from "./HomePage/Navigation/ChooseHealthFacility";
+
 class App extends Component {
     handlePersistorState = () => {
         const { persistor } = this.props;
@@ -87,6 +90,15 @@ class App extends Component {
                                     <Route
                                         path={path.VERIFY_EMAIL_BOOKING}
                                         component={VerifyEmail}
+                                    />
+
+                                    <Route
+                                        path={path.CHOOSE_SPECIALTY}
+                                        component={ChooseSpecialty}
+                                    />
+                                    <Route
+                                        path={path.CHOOSE_HEALTH_FACILITY}
+                                        component={ChooseHealthFacility}
                                     />
                                 </Switch>
                             </CustomScrollbars>

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Slider from "react-slick";
 import { Link } from "react-router-dom";
 
 import userService from "../../../services/userService";
+import HomeHeader from "../HomeHeader";
+import "./ChooseHealthFacility.scss";
 
-class MedicalFacility extends Component {
+class ChooseHealthFacility extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,41 +24,43 @@ class MedicalFacility extends Component {
 
     render() {
         let { dataClinic } = this.state;
-        console.log("dataClinic", dataClinic);
         return (
-            <div className="section section-medicalFacility">
-                <div className="section-container">
-                    <div className="section-header">
+            <>
+                <HomeHeader isShowBaner={false} />
+                <div className="choose-health-facilities container">
+                    <div className="h-f-title">
                         <span>Cơ sở Y tế nổi bật</span>
-                        <button className="see-more">Xem thêm</button>
                     </div>
-                    <div className="section-body">
-                        <Slider {...this.props.settings}>
+
+                    <div className="container list-h-f">
+                        <div className="row">
                             {dataClinic &&
                                 dataClinic.length > 0 &&
                                 dataClinic.map((item, index) => {
                                     return (
-                                        <Link
-                                            className="custom-link"
-                                            to={`/detail-clinic/${item.id}`}
-                                            key={index}
-                                        >
-                                            <div className="img-customize">
+                                        <div className="col-lg-4" key={index}>
+                                            <Link
+                                                className="custom-link"
+                                                to={`/detail-clinic/${item.id}`}
+                                            >
                                                 <div
-                                                    className="section-logo medicalFacility-logo"
+                                                    className="img-customize h-f-logo"
                                                     style={{
                                                         backgroundImage: `url(${item.image})`,
                                                     }}
-                                                ></div>
-                                                <span>{item.name}</span>
-                                            </div>
-                                        </Link>
+                                                >
+                                                    <span className="name-hf">
+                                                        {item.name}
+                                                    </span>
+                                                </div>
+                                            </Link>
+                                        </div>
                                     );
                                 })}
-                        </Slider>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 }
@@ -73,4 +76,7 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MedicalFacility);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(ChooseHealthFacility);
