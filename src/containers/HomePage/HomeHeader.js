@@ -20,7 +20,10 @@ class HomeHeader extends Component {
                     <div className="home-header-content">
                         <div className="left-content col-2">
                             <i className="fas fa-bars"></i>
-                            <div className="header-logo"></div>
+                            <div
+                                className="header-logo"
+                                onClick={() => (window.location.href = "/")}
+                            ></div>
                         </div>
                         <div className="center-content col-8">
                             <div className="child-content">

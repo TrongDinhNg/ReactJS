@@ -9,28 +9,12 @@ class About extends Component {
                     Truyền thông nói gì vể chúng tôi
                 </div>
                 <div className="about-content">
-                    <div className="about-content-left">
-                        <iframe
-                            width="100%"
-                            height="320"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                            title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                        ></iframe>
-                    </div>
+                    <div className="about-content-left"></div>
                     <div className="about-content-right text-center">
-                        chỉ hận nhân sinh không lặp lại
-                        <br />
-                        nhiều chuyện sở ngộ không thể cầu
-                        <br />
-                        năm tháng đằng đẵng bỗng quay đầu <br />
-                        cảnh còn người mất <br />
-                        vạn vật vẫn kiệm lời sinh sôi nảy nở <br />
-                        đôi lời bỡ ngỡ <br />
-                        một thời hoa nở bỗng thành không
-                        <br />
+                        Nền tảng Y tế chăm sóc sức khỏe toàn diện hàng đầu Việt
+                        Nam vươn tầm khu vực Asean, giúp bệnh nhân lựa chọn dịch
+                        vụ y tế phù hợp nhằm nâng cao hiệu quả chữa bệnh, tiết
+                        kiệm thời gian và chi phí.
                     </div>
                 </div>
             </div>
