@@ -129,7 +129,7 @@ class Login extends Component {
                         </div>
                         <div className="col-12">
                             <span className="forgot-password">
-                                Fogot your password?
+                                Forgot your password?
                             </span>
                         </div>
                         <div className="col-12 mt-5">

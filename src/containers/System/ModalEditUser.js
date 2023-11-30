@@ -278,8 +278,6 @@ class ModalEditUser extends Component {
                                     </FormGroup>
                                 </Col>
                             </Row>
-
-                            <Button>Sign in</Button>
                         </Form>
                     </ModalBody>
                     <ModalFooter>

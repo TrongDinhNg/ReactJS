@@ -5,11 +5,12 @@
     overflow-y: auto;
 
     .btn-edit {
-        height    : 30px;
-        width     : 20px;
-        margin    : 5px;
-        background: transparent;
-        color     : orange;
+        height      : 30px;
+        width       : 29px;
+        margin      : 5px;
+        background  : transparent;
+        color       : orange;
+        padding-left: 7px;
 
         &:hover {
             background-color: transparent;
@@ -18,11 +19,12 @@
     }
 
     .btn-delete {
-        height    : 30px;
-        width     : 20px;
-        margin    : 5px;
-        background: transparent;
-        color     : red;
+        height      : 30px;
+        width       : 29px;
+        margin      : 5px;
+        background  : transparent;
+        color       : red;
+        padding-left: 7px;
 
         &:hover {
             background-color: transparent;
